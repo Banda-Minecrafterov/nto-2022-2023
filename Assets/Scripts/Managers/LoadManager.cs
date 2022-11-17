@@ -26,7 +26,7 @@ public class LoadManager : MonoBehaviour
 
         while (!async.isDone)
         {
-            Debug.Log('\t' + async.progress);
+            Debug.Log("\t" + async.progress);
 
             if (async.progress >= 0.9f)
                 async.allowSceneActivation = true;
