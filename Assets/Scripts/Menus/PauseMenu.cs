@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
 public class PauseMenu : BaseMenu
 {
@@ -83,9 +82,6 @@ public class PauseMenu : BaseMenu
 
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-            components.Add(player.GetComponent<Player>());
-            components.Add(player.transform.parent.GetComponentInChildren<CinemachineFreeLook>());
         }
 
         return components;
