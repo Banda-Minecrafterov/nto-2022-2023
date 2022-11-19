@@ -4,15 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class LoadManager : MonoBehaviour
+public class LoadSceneManager : MonoBehaviour
 {
-    IEnumerator coroutine;
+    Coroutine coroutine;
 
     public void LoadScene(string scene)
     {
         SceneManager.LoadScene("Load Screen");
-        coroutine = LoadSceneAsync(scene);
-        StartCoroutine(coroutine);
+        coroutine = StartCoroutine(LoadSceneAsync(scene));
     }
 
 

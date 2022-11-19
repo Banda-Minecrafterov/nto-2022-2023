@@ -22,6 +22,6 @@ public class Manager : MonoBehaviour
 
     public static void LoadScene(string scene)
     {
-        managger.AddComponent<LoadManager>().LoadScene(scene);
+        managger.AddComponent<LoadSceneManager>().LoadScene(scene);
     }
 }
