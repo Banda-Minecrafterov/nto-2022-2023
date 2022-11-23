@@ -1,35 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
-public class SaveLoadManager : MonoBehaviour
+public class SaveLoadManager
 {
-    public void Save()
+    static List<ISaveLoadData> saveLoadObjects;
+
+
+    public static void Save(ref BinaryWriter data, Int32 version)
     {
-        foreach (var i in GetSaveLoadObjects())
+        data.Write(version);
+
+        foreach (var i in saveLoadObjects)
         {
-            i.Save();
+            i.Save(ref data);
         }
     }
 
-    public void Load()
+    public static void Load(ref BinaryReader data, Int32 version)
     {
-        foreach (var i in GetSaveLoadObjects())
+        GetSaveLoadObjects();
+
+        foreach (var i in saveLoadObjects)
         {
-            i.Load();
+            i.Load(ref data, version);
         }
     }
 
 
-    List<ISaveLoadData> GetSaveLoadObjects()
+    public static void GetSaveLoadObjects()
     {
-        List<ISaveLoadData> datas = new List<ISaveLoadData>();
+        saveLoadObjects = new List<ISaveLoadData>();
 
-        foreach (var i in GameObject.FindGameObjectsWithTag("Save-Load"))
+        foreach (var i in GameObject.FindGameObjectsWithTag("Save Load"))
         {
-            datas.Add(i.GetComponent<ISaveLoadData>());
+            saveLoadObjects.Add(i.GetComponent<ISaveLoadData>());
         }
-
-        return datas;
     }
 }

@@ -1,14 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenu : BaseMenu
 {
-    public static bool isPaused = false;
+    public static bool isPaused { get; private set; }
 
     [SerializeField]
     GameObject pauseMenu;
 
+    public static GameObject saveMenu { get; private set; }
+    
 
     void Awake()
     {
@@ -16,7 +19,15 @@ public class PauseMenu : BaseMenu
         pauseMenu.SetActive(false);
 #endif
 
+        isPaused = false;
+        saveMenu = transform.Find("Save").gameObject;
+
         StartCoroutine(UpdateMenu());
+    }
+
+    void Start()
+    {
+        SaveLoadManager.GetSaveLoadObjects();
     }
 
 
@@ -24,10 +35,10 @@ public class PauseMenu : BaseMenu
     {
         while (true)
         {
-            if (Input.GetAxisRaw("Cancel") != 0)
+            if (Input.GetButtonDown("Cancel") && !saveMenu.activeSelf)
             {
                 Resume();
-                yield return new WaitForSecondsRealtime(0.2f);
+                yield return new WaitForSecondsRealtime(0.1f);
             }
             yield return null;
         }
@@ -56,10 +67,6 @@ public class PauseMenu : BaseMenu
 
         Time.timeScale = isPaused ? 0 : 1;
         MouseManager.SetMouseMode(isPaused);
-    }
-
-    public void Save()
-    {
     }
 
     public void Settings(GameObject settings)

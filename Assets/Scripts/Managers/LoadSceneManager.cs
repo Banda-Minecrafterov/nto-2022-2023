@@ -6,12 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneManager : MonoBehaviour
 {
-    Coroutine coroutine;
-
     public void LoadScene(string scene)
     {
         SceneManager.LoadScene("Load Screen");
-        coroutine = StartCoroutine(LoadSceneAsync(scene));
+        StartCoroutine(LoadSceneAsync(scene));
     }
 
 
@@ -31,7 +29,8 @@ public class LoadSceneManager : MonoBehaviour
                 async.allowSceneActivation = true;
             yield return null;
         }
-        StopCoroutine(coroutine);
+        Manager.FinishLoadScreen();
+
         Destroy(this);
 
         Debug.Log("Stop loading: " + scene);

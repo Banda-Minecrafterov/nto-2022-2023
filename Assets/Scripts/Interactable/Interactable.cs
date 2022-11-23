@@ -9,7 +9,7 @@ public abstract class Interactable : MonoBehaviour
 
     void Awake()
     {
-        interactCheck = StartCoroutine(InteractCheck());
+        StartButtonCheck();
     }
 
 
@@ -17,13 +17,19 @@ public abstract class Interactable : MonoBehaviour
     {
         while (true)
         {
-            if (Input.GetAxisRaw("Interact") != 0)
+            if (Input.GetButtonDown("Interact") && !PauseMenu.isPaused)
             {
                 Interact();
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.1f);
             }
             yield return null;
         }
+    }
+
+
+    protected void StartButtonCheck()
+    {
+        interactCheck = StartCoroutine(InteractCheck());
     }
 
 
