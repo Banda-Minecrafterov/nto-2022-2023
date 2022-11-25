@@ -6,6 +6,15 @@ public class SaveData : Data
 {
     BinaryWriter writer;
 
+
+    void OnDestroy()
+    {
+        writer?.Close();
+        reader?.Close();
+        fs?.Close();
+    }
+
+
     public void Open(int id)
     {
         if (Open(id + ".sav", FileMode.Open, FileAccess.ReadWrite))
@@ -17,16 +26,14 @@ public class SaveData : Data
         if (version == FileNotFound || version == ErrorOcured)
         {
             fs     = File.Open(Path.Combine(Application.persistentDataPath, id + ".sav"), FileMode.Create, FileAccess.ReadWrite);
-            
-            reader = new BinaryReader(fs);
             writer = new BinaryWriter(fs);
-
-            version = Convert.ToInt32(Application.version);
         }
-        Debug.Log("SaveData Save");
+        else
+        {
+            fs.SetLength(0);
+        }
+        version = Convert.ToInt32(Application.version);
 
-        SaveLoadManager.Save(ref writer, version);
-
-        Destroy(this);
+        SaveLoadData.SaveAll(ref writer, version);
     }
 }

@@ -14,9 +14,7 @@ public class LoadData : Data
         if (version == FileNotFound || version == ErrorOcured)
             return;
 
-        Debug.Log("LoadData Load");
-
-        SaveLoadManager.Load(ref reader, version);
+        SaveLoadData.LoadAll(ref reader, version);
         reader.Close();
 
         fs.Close();

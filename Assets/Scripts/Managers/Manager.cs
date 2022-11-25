@@ -39,6 +39,14 @@ public class Manager : MonoBehaviour
 
     public static void LoadScene(string scene)
     {
+        if (scene == "Menu")
+        {
+            foreach (SaveData data in manager.GetComponents<SaveData>())
+            {
+                Destroy(data);
+            }
+        }
+
         manager.AddComponent<LoadSceneManager>().LoadScene(scene);
     }
 
@@ -46,7 +54,6 @@ public class Manager : MonoBehaviour
     {
         LoadData data = manager.GetComponent<LoadData>();
 
-        Debug.Log("Manager Load");
         if (data != null)
         {
             data.Load();

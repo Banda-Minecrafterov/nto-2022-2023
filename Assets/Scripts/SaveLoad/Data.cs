@@ -18,7 +18,7 @@ public class Data : MonoBehaviour
         {
             fs = File.Open(Path.Combine(Application.persistentDataPath, path), fileMode, fileAccess);
         }
-        catch (FileNotFoundException e)
+        catch (FileNotFoundException)
         {
             version = FileNotFound;
             return false;
@@ -30,7 +30,7 @@ public class Data : MonoBehaviour
             return false;
         }
 
-        reader = new BinaryReader(fs);
+        reader  = new BinaryReader(fs);
         version = reader.ReadInt32();
 
         return true;

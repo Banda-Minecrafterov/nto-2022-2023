@@ -25,11 +25,6 @@ public class PauseMenu : BaseMenu
         StartCoroutine(UpdateMenu());
     }
 
-    void Start()
-    {
-        SaveLoadManager.GetSaveLoadObjects();
-    }
-
 
     IEnumerator UpdateMenu()
     {
