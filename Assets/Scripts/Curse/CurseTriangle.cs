@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PolygonCollider2D))]
@@ -12,15 +10,9 @@ public class CurseTriangle : MonoBehaviour
     float minR;
 
 
-    public void Teleport(Vector3 dir)
+    public void Teleport(Vector2 dir, float R)
     {
-        if (dir.magnitude < minR)
-        {
-            dir.Normalize();
-            dir *= minR;
-        }
-
-        transform.localPosition = dir;
+        transform.localPosition = dir * Random.Range(minR, R);
     }
 
 

@@ -1,6 +1,3 @@
-using Unity.VisualScripting;
-using UnityEngine;
-
 public class SaveMenu : SaveLoadMenu
 {
     void OnEnable()
@@ -25,7 +22,7 @@ public class SaveMenu : SaveLoadMenu
 
     public void Back()
     {
-        gameObject.SetActive(false);
+        PauseMenu.SaveMenu();
     }
 
 

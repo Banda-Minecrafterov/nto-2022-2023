@@ -1,28 +1,33 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenu : BaseMenu
 {
-    public static bool isPaused { get; private set; }
+    public static bool isPaused { get; private set; } = false;
 
     [SerializeField]
     GameObject pauseMenu;
+    [SerializeField]
+    GameObject settingsMenu;
 
-    public static GameObject saveMenu { get; private set; }
+    [SerializeField]
+    GameObject saveMenu;
+
+    static PauseMenu menu;
     
 
     void Awake()
     {
-#if DEBUG
-        pauseMenu.SetActive(false);
-#endif
-
-        isPaused = false;
-        saveMenu = transform.Find("Save").gameObject;
+        menu = this;
 
         StartCoroutine(UpdateMenu());
+
+#if DEBUG
+        pauseMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        saveMenu.SetActive(false);
+#endif
     }
 
 
@@ -50,14 +55,8 @@ public class PauseMenu : BaseMenu
 
         isPaused = !isPaused;
 
-        {
-            GameObject settings = pauseMenu.transform.Find("Settings").gameObject;
-            if (isPaused && settings.activeSelf)
-            {
-                pauseMenu.transform.Find("Menu").gameObject.SetActive(true);
-                settings.gameObject.SetActive(false);
-            }
-        }
+        if (!isPaused)
+            settingsMenu.SetActive(false);
         pauseMenu.SetActive(isPaused);
 
         Time.timeScale = isPaused ? 0 : 1;
@@ -66,7 +65,7 @@ public class PauseMenu : BaseMenu
 
     public void Settings(GameObject settings)
     {
-        base.Settings(pauseMenu.transform.Find("Menu").gameObject, settings);
+        Settings(pauseMenu, settings);
     }
 
     public void Menu()
@@ -78,12 +77,24 @@ public class PauseMenu : BaseMenu
     }
 
 
-    List<MonoBehaviour> GetPauseComponents()
+    public static void SaveMenu()
+    {
+        menu.Resume();
+        if (isPaused)
+        {
+            menu.pauseMenu.SetActive(false);
+        }
+        menu.saveMenu.SetActive(isPaused);
+    }
+
+
+    static List<MonoBehaviour> GetPauseComponents()
     {
         List<MonoBehaviour> components = new List<MonoBehaviour>();
 
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
+            components.Add(player.GetComponent<test>());
         }
 
         return components;

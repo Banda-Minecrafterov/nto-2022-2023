@@ -6,7 +6,7 @@ using UnityEngine;
 
 public abstract class SaveLoadData : MonoBehaviour
 {
-    protected enum SaveObjectId
+    public enum SaveObjectId
     {
         test = 0, size
     }
@@ -14,7 +14,7 @@ public abstract class SaveLoadData : MonoBehaviour
     static public SaveLoadData[] saveObjects { get; private set; } = new SaveLoadData[(int)SaveObjectId.size];
 
 
-    protected void AddObject(SaveObjectId id)
+    public void AddObject(SaveObjectId id)
     {
         saveObjects[(int)id] = this;
     }

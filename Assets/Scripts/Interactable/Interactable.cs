@@ -1,31 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
 [RequireComponent(typeof(Collider2D))]
 public abstract class Interactable : MonoBehaviour
 {
-    protected Coroutine interactCheck;
-    protected bool isTouching { get; private set; } = false; 
-
-
-    void Awake()
-    {
-        StartButtonCheck();
-    }
+    Coroutine interactCheck;
 
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-            isTouching = true;
+            StartButtonCheck();
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-            isTouching = false;
+            StopButtonCheck();
     }
 
 
@@ -33,7 +25,7 @@ public abstract class Interactable : MonoBehaviour
     {
         while (true)
         {
-            if (isTouching && !PauseMenu.isPaused && Input.GetButtonDown("Interact"))
+            if (!PauseMenu.isPaused && Input.GetButtonDown("Interact"))
             {
                 Interact();
                 yield return new WaitForSeconds(0.1f);
@@ -46,6 +38,11 @@ public abstract class Interactable : MonoBehaviour
     protected void StartButtonCheck()
     {
         interactCheck = StartCoroutine(InteractCheck());
+    }
+
+    protected void StopButtonCheck()
+    {
+        StopCoroutine(interactCheck);
     }
 
 

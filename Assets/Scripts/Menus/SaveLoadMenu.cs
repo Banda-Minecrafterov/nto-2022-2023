@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.EventSystems.PointerEventData;
 
 public abstract class SaveLoadMenu : BaseMenu
 {
@@ -52,7 +49,7 @@ public abstract class SaveLoadMenu : BaseMenu
 
     public void Settings(GameObject settings)
     {
-        base.Settings(gameObject, settings);
+        Settings(gameObject, settings);
     }
 
 

@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Timeline;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(CircleCollider2D))]
 public abstract class CurseMaster : MonoBehaviour
@@ -74,8 +71,8 @@ public abstract class CurseMaster : MonoBehaviour
                 stacks = -1;
                 curseEffectCoroutine = StartCoroutine(CurseEffect());
 
-                triangle.Teleport((transform.position - collision.transform.position).normalized * UnityEngine.Random.Range(minR, R));
-                purification.transform.localPosition = UnityEngine.Random.insideUnitSphere * R;
+                triangle.Teleport((transform.position - collision.transform.position).normalized, R);
+                purification.transform.localPosition = UnityEngine.Random.insideUnitCircle * R;
             }
         }
     }
@@ -91,12 +88,8 @@ public abstract class CurseMaster : MonoBehaviour
 
     public void Teleport(Vector3 playerPos)
     {
-        var position = transform.position;
-        var dir      = (position - playerPos).normalized * UnityEngine.Random.Range(minR, R);
-        transform.position = position + dir;
-
-        purification.transform.localPosition = UnityEngine.Random.insideUnitSphere * R;
-        triangle.Teleport(dir);
+        var position       = transform.position;
+        transform.position = position + (position - playerPos).normalized * UnityEngine.Random.Range(minR, R);
     }
 
 

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
@@ -52,11 +49,6 @@ public class Manager : MonoBehaviour
 
     public static void FinishLoadScreen()
     {
-        LoadData data = manager.GetComponent<LoadData>();
-
-        if (data != null)
-        {
-            data.Load();
-        }
+        manager.GetComponent<LoadData>()?.Load();
     }
 }
