@@ -1,18 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class LoadManager : MonoBehaviour
+public class LoadSceneManager : MonoBehaviour
 {
-    IEnumerator coroutine;
-
     public void LoadScene(string scene)
     {
         SceneManager.LoadScene("Load Screen");
-        coroutine = LoadSceneAsync(scene);
-        StartCoroutine(coroutine);
+        StartCoroutine(LoadSceneAsync(scene));
     }
 
 
@@ -32,7 +28,8 @@ public class LoadManager : MonoBehaviour
                 async.allowSceneActivation = true;
             yield return null;
         }
-        StopCoroutine(coroutine);
+        Manager.FinishLoadScreen();
+
         Destroy(this);
 
         Debug.Log("Stop loading: " + scene);
