@@ -183,10 +183,10 @@ TextureImporter:
       name: 8_3
       rect:
         serializedVersion: 2
-        x: 403
+        x: 517
         y: 5
-        width: 207
-        height: 419
+        width: 93
+        height: 170
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,6 +196,48 @@ TextureImporter:
       bones: []
       spriteID: d96f087b12bdfee44bc3ccc925278406
       internalID: -982505458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 8_4
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 175
+        width: 87
+        height: 74
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc42cbcfd6a242543b33c88528a12726
+      internalID: 1330198617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 8_5
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 249
+        width: 174
+        height: 175
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93a089e839e1de4aaeec43941166942
+      internalID: 1259824828
       vertices: []
       indices: 
       edges: []
@@ -214,6 +256,8 @@ TextureImporter:
       8_1: 429036233
       8_2: -1057777902
       8_3: -982505458
+      8_5: 1259824828
+      8_4: 1330198617
       8_0: -1201459608
   spritePackingTag: 
   pSDRemoveMatte: 0
