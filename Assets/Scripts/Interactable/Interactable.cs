@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using UnityEngine;
-
 
 [RequireComponent(typeof(Collider2D))]
 public abstract class Interactable : MonoBehaviour
@@ -40,9 +40,17 @@ public abstract class Interactable : MonoBehaviour
         interactCheck = StartCoroutine(InteractCheck());
     }
 
-    protected void StopButtonCheck()
+    protected bool StopButtonCheck()
     {
-        StopCoroutine(interactCheck);
+        try
+        {
+            StopCoroutine(interactCheck);
+        }
+        catch(Exception)
+        {
+            return false;
+        }
+        return true;
     }
 
 

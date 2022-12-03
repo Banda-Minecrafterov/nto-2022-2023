@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 
-public class test : SaveLoadData
+public class test : MonoBehaviour, ISaveLoadData
 {
     public int a;
 
@@ -12,17 +12,17 @@ public class test : SaveLoadData
     }
 
 
-    public override void Awake()
+    void Awake()
     {
-        AddObject(SaveObjectId.test);
+        SaveLoadManager.AddObject(SaveLoadManager.SaveObjectId.test, this);
     }
 
-    public override void Load(ref BinaryReader data, int version)
+    public void Load(ref BinaryReader data, int version)
     {
         a = data.ReadInt32();
     }
 
-    public override void Save(ref BinaryWriter data)
+    public void Save(ref BinaryWriter data)
     {
         data.Write(a);
     }

@@ -4,19 +4,22 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public abstract class SaveLoadData : MonoBehaviour
+public class SaveLoadManager
 {
     public enum SaveObjectId
     {
-        test = 0, size
+        test = 0,
+        invSlot0, invSlot35 = invSlot0 + 35,
+        openWhenInteracted0,
+        size,
     }
 
-    static public SaveLoadData[] saveObjects { get; private set; } = new SaveLoadData[(int)SaveObjectId.size];
+    static public ISaveLoadData[] saveObjects { get; private set; } = new ISaveLoadData[(int)SaveObjectId.size];
 
 
-    public void AddObject(SaveObjectId id)
+    public static void AddObject(SaveObjectId id, ISaveLoadData data)
     {
-        saveObjects[(int)id] = this;
+        saveObjects[(int)id] = data;
     }
 
 
@@ -37,11 +40,4 @@ public abstract class SaveLoadData : MonoBehaviour
             i.Load(ref data, version);
         }
     }
-
-
-    public abstract void Awake();
-
-    public abstract void Save(ref BinaryWriter data);
-
-    public abstract void Load(ref BinaryReader data, Int32 version);
 }

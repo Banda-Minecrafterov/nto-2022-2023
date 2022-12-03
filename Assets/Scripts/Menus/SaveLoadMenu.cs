@@ -10,7 +10,7 @@ public abstract class SaveLoadMenu : BaseMenu
 
     protected Data[] datas;
 
-    void Start()
+    void Awake()
     {
         SaveSlotCount = buttons.childCount;
         datas         = new Data[SaveSlotCount];

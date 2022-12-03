@@ -12,7 +12,7 @@ public class LoadData : Data
         if (version == FileNotFound || version == ErrorOcured)
             return;
 
-        SaveLoadData.LoadAll(ref reader, version);
+        SaveLoadManager.LoadAll(ref reader, version);
         reader.Close();
 
         fs.Close();

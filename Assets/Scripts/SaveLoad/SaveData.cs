@@ -34,6 +34,6 @@ public class SaveData : Data
         }
         version = Convert.ToInt32(Application.version);
 
-        SaveLoadData.SaveAll(ref writer, version);
+        SaveLoadManager.SaveAll(ref writer, version);
     }
 }
