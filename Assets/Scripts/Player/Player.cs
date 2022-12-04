@@ -6,7 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : Character
 {
+    Animator animator;
     Rigidbody2D rb;
+
     float horizontal;
     float vertical;
     float DiagonallySpeed = 0.7f;
@@ -20,14 +22,11 @@ public class Player : Character
     public bool roll = false;
     private bool isFacingRight = true;
 
-    PlayerHealth game;
 
 
-
-    void Start()
+    void Awake()
     {
-        game = GetComponent<PlayerHealth>();
-
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -35,15 +34,6 @@ public class Player : Character
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
-        if (!isFacingRight && horizontal > 0)
-        {
-            Flip();
-        }
-        else if (isFacingRight && horizontal < 0)
-        {
-            Flip();
-        }
 
         Roll();
     }
@@ -58,7 +48,9 @@ public class Player : Character
         }
         if (roll == false)
         {
-            rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+            Vector2 move = new Vector2(horizontal * speed, vertical * speed);
+            rb.velocity = move;
+            animator.SetFloat("Speed Y", vertical);
         }       
     }
 
@@ -118,13 +110,6 @@ public class Player : Character
                 }
             }
         }
-    }
-    void Flip()
-    {
-        isFacingRight = !isFacingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
     }
 }
 

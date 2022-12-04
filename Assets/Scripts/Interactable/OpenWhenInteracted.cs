@@ -6,7 +6,10 @@ using UnityEngine;
 public class OpenWhenInteracted : Interactable, ISaveLoadData
 {
     [SerializeField]
-    GameObject open;
+    SpriteRenderer open;
+
+    [SerializeField]
+    float speed;
 
     [SerializeField]
     int id;
@@ -20,11 +23,32 @@ public class OpenWhenInteracted : Interactable, ISaveLoadData
 
     protected override void Interact()
     {
-        open.SetActive(false);
-
         StopButtonCheck();
 
+        StartCoroutine(Open());
+    }
+
+
+    IEnumerator Open()
+    {
+        while (true)
+        {
+            Color color = open.color;
+            color.a -= Time.deltaTime * speed;
+            open.color = color;
+
+            if (color.a <= 0)
+                break;
+            yield return null;
+        }
+        open.gameObject.SetActive(false);
+
         GetComponent<Collider2D>().enabled = false;
+        foreach(var i in GetComponentsInChildren<Collider2D>())
+        {
+            i.enabled = false;
+        }
+
         enabled = false;
     }
 
@@ -39,6 +63,6 @@ public class OpenWhenInteracted : Interactable, ISaveLoadData
 
     public void Save(ref BinaryWriter data)
     {
-        data.Write(open.activeSelf);
+        data.Write(open.gameObject.activeSelf);
     }
 }

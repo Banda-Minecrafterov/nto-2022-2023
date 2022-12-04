@@ -8,13 +8,12 @@ public class SaveLoadManager
 {
     public enum SaveObjectId
     {
-        test = 0,
-        invSlot0, invSlot35 = invSlot0 + 35,
+        invSlot0 = 0, invSlot35 = invSlot0 + 35,
         openWhenInteracted0,
         size,
     }
 
-    static public ISaveLoadData[] saveObjects { get; private set; } = new ISaveLoadData[(int)SaveObjectId.size];
+    static ISaveLoadData[] saveObjects = new ISaveLoadData[(int)SaveObjectId.size];
 
 
     public static void AddObject(SaveObjectId id, ISaveLoadData data)

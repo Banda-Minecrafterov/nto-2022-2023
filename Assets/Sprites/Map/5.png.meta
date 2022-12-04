@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -142,11 +142,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 914
-        y: 1158
-        width: 240
-        height: 302
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        y: 1255
+        width: 160
+        height: 205
+      alignment: 9
+      pivot: {x: 0, y: -0.47317073}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -389,6 +389,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: 5_13
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 1158
+        width: 81
+        height: 210
+      alignment: 9
+      pivot: {x: 0, y: 0.114285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d1b1c65696b2ee43b56609218280f04
+      internalID: -536100727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -408,6 +429,7 @@ TextureImporter:
       5_8: 2143111059
       5_12: 802552007
       5_5: 1726890552
+      5_13: -536100727
       5_7: -1509918210
       5_11: -1334593679
       5_2: -756610467

@@ -146,9 +146,11 @@ public class PauseMenu : BaseMenu
     {
         List<MonoBehaviour> components = new List<MonoBehaviour>();
 
+        components.Add(GameObject.FindGameObjectWithTag("Player").GetComponent<Player>());
+
+        foreach(var i in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            components.Add(player.GetComponent<test>());
+            components.Add(i.GetComponent<Enemy>());
         }
 
         return components;
