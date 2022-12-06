@@ -6,7 +6,18 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 public class EnemyChase : MonoBehaviour
 {
-    AIPath path;
+    static int inCombat = 0;
+
+    public static bool isNotInCombat
+    {
+        get
+        {
+            return inCombat == 0;
+        }
+    }
+
+
+    EnemyMovement movement;
 
     new CircleCollider2D collider;
 
@@ -20,12 +31,12 @@ public class EnemyChase : MonoBehaviour
 
     void Awake()
     {
-        path     = GetComponentInParent<AIPath>();
+        movement = GetComponentInParent<EnemyMovement>();
         sprite   = GetComponentInParent<SpriteRenderer>();
         collider = GetComponent<CircleCollider2D>();
 
 #if DEBUG
-        path.enabled = false;
+        movement.enabled = false;
         collider.radius = sawRadius;
 #endif
     }
@@ -35,19 +46,21 @@ public class EnemyChase : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            inCombat++;
+
             collider.radius = chaseRadius;
-            path.enabled = true;
+            movement.enabled = true;
         }
     }
     void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            if (path.desiredVelocity.x >= float.Epsilon)
+            if (movement.desiredVelocity.x > 0)
             {
                 sprite.flipX = true;
             }
-            else
+            else if (movement.desiredVelocity.x < 0)
             {
                 sprite.flipX = false;
             }
@@ -58,8 +71,10 @@ public class EnemyChase : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            inCombat--;
+
             collider.radius = sawRadius;
-            path.enabled = false;
+            movement.enabled = false;
         }
     }
 }

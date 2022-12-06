@@ -6,34 +6,37 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : Character
 {
-    Animator animator;
     Rigidbody2D rb;
 
     float horizontal;
     float vertical;
-    float DiagonallySpeed = 0.7f;
-    public float speed = 20.0f;
+    [SerializeField]
+    float DiagonallySpeed = 85.0f;
+    [SerializeField]
+    float speed = 80.0f;
 
     public float dashSpeed;
     private float dashTime;
     public float startDashTime;
     private int direction;
 
-    public bool roll = false;
-    private bool isFacingRight = true;
+    bool isNotAttacking = true;
+
+    Vector2 lastChangedMovement = Vector2.zero;
+    Vector2 animValues = Vector2.zero;
 
 
-
-    void Awake()
+    new void Awake()
     {
-        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+        base.Awake();
     }
 
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        vertical   = Input.GetAxisRaw("Vertical");
 
         Roll();
     }
@@ -41,18 +44,71 @@ public class Player : Character
 
     void FixedUpdate()
     {
-        if (horizontal != 0 && vertical != 0)
+        if (isNotAttacking)
         {
-            horizontal *= DiagonallySpeed;
-            vertical *= DiagonallySpeed;
-        }
-        if (roll == false)
-        {
-            Vector2 move = new Vector2(horizontal * speed, vertical * speed);
+            Vector2 move = new Vector2(horizontal, vertical);
+
+            if (move.x == 0.0f || move.y == 0.0f)
+            {
+                animValues = move;
+
+                animator.SetFloat("Speed X", animValues.x);
+                animator.SetFloat("Speed Y", animValues.y);
+
+                lastChangedMovement = move;
+
+                move *= speed;
+            }
+            else
+            {
+                if (lastChangedMovement.x != move.x)
+                {
+                    if (lastChangedMovement.y != move.y)
+                    {
+                        if (Random.Range(0, 1) == 0)
+                        {
+                            animValues = new Vector2(move.x, 0.0f);
+                        }
+                        else
+                        {
+                            animValues = new Vector2(0.0f, move.y);
+                        }
+                    }
+                    else
+                    {
+                        animValues = new Vector2(move.x, 0.0f);
+                    }
+
+                    animator.SetFloat("Speed X", animValues.x);
+                    animator.SetFloat("Speed Y", animValues.y);
+                }
+                else
+                {
+                    if (lastChangedMovement.y != move.y)
+                    {
+                        animValues = new Vector2(0.0f, move.y);
+
+                        animator.SetFloat("Speed X", animValues.x);
+                        animator.SetFloat("Speed Y", animValues.y);
+                    }
+                }
+                lastChangedMovement = move;
+
+                move = move.normalized * DiagonallySpeed;
+            }
+
             rb.velocity = move;
-            animator.SetFloat("Speed Y", vertical);
-        }       
+        }
+        else
+            rb.velocity = Vector2.zero;
     }
+
+
+    void OnEnable()
+    {
+        StartCoroutine(Attack());
+    }
+
 
     void Roll()
     {
@@ -82,7 +138,7 @@ public class Player : Character
                 direction = 0;
                 dashTime = startDashTime;
                 rb.velocity = Vector2.zero;
-                roll = false;
+                //roll = false;
             }
             else
             {
@@ -90,25 +146,40 @@ public class Player : Character
 
                 if (direction == 1)
                 {
-                    roll = true;
+                    //roll = true;
                     rb.velocity = Vector2.up * dashSpeed;
                 }
                 else if (direction == 2)
                 {
-                    roll = true;
+                    //roll = true;
                     rb.velocity = Vector2.down * dashSpeed;
                 }
                 else if (direction == 3)
                 {
-                    roll = true;
+                    //roll = true;
                     rb.velocity = Vector2.right * dashSpeed;
                 }
                 else
                 {
-                    roll = true;
+                    //roll = true;
                     rb.velocity = Vector2.left * dashSpeed;
                 }
             }
+        }
+    }
+
+
+    IEnumerator Attack()
+    {
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                isNotAttacking = false;
+                yield return StartCoroutine(attack[0].Attack("Player Attack 0"));
+                isNotAttacking = true;
+            }
+            yield return null;
         }
     }
 }

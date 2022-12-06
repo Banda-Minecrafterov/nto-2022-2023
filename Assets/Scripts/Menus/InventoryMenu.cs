@@ -1,34 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class InventoryMenu : BaseMenu
 {
     [SerializeField]
-    Transform slotsParent;
+    Transform inventorySlotsParent;
+    [SerializeField]
+    Transform handSlotsParent;
 
     InventorySlot[] slots;
 
-    [SerializeField]
-    InventoryItemData[] localDatas;
-
     public static InventoryMenu menu { get; private set; }
 
-    public static InventoryItemData[] datas
-    {
-        get
-        {
-            return menu.localDatas;
-        }
-    }
 
     void Awake()
     {
         menu = this;
 
-        slots = slotsParent.GetComponentsInChildren<InventorySlot>();
+        slots = inventorySlotsParent.GetComponentsInChildren<InventorySlot>().Concat(handSlotsParent.GetComponentsInChildren<InventorySlot>()).ToArray();
 
         gameObject.SetActive(false);
     }

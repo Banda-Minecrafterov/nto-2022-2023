@@ -1,50 +1,31 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : AIPath
 {
+    Enemy enemy;
 
-    public float chaseRadius;
-    public float attackRadius;
-    public float moveSpeed;
-    private bool isFacingRight = false;
-
-    public Transform target;
-
-    void Start()
+    protected override void Awake()
     {
-        target = GameObject.FindWithTag("Player").transform;
-    }
+        enemy = GetComponent<Enemy>();
 
-    void Update()
-    {
-        CheckDistance();
-
+        base.Awake();
     }
 
 
-
-    void CheckDistance()
+    public override void OnTargetReached()
     {
-        if (Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius)
+        enemy.StartAttacking();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        if (waitingForPathCalculation)
         {
-            {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-
-                if (target.transform.position.x < gameObject.transform.position.x && isFacingRight)
-                    Flip();
-                if (target.transform.position.x > gameObject.transform.position.x && !isFacingRight)
-                    Flip();
-            }
+            enemy.StopAttacking();
         }
-    }
-    void Flip()
-    {
-        isFacingRight = !isFacingRight;
-        Vector3 tmpScale = gameObject.transform.localScale;
-        tmpScale.x *= -1;
-        gameObject.transform.localScale = tmpScale;
-
     }
 }

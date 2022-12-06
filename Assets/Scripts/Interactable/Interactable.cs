@@ -25,7 +25,7 @@ public abstract class Interactable : MonoBehaviour
     {
         while (true)
         {
-            if (!PauseMenu.isPaused && Input.GetButtonDown("Interact"))
+            if (EnemyChase.isNotInCombat && !PauseMenu.isPaused && Input.GetButtonDown("Interact"))
             {
                 Interact();
                 yield return new WaitForSeconds(0.1f);
@@ -38,6 +38,7 @@ public abstract class Interactable : MonoBehaviour
     protected void StartButtonCheck()
     {
         interactCheck = StartCoroutine(InteractCheck());
+        TipManager.TipButtonEnable();
     }
 
     protected bool StopButtonCheck()
@@ -46,10 +47,9 @@ public abstract class Interactable : MonoBehaviour
         {
             StopCoroutine(interactCheck);
         }
-        catch(Exception)
-        {
-            return false;
-        }
+        catch { return false; }
+
+        TipManager.TipButtonDisable();
         return true;
     }
 

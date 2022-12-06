@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
-public class ItemGetter : Interactable
+public class ItemGetter : InteractableDisableIfInteract
 {
     [SerializeField]
     UInt32 itemId;
@@ -15,7 +16,15 @@ public class ItemGetter : Interactable
     {
         if (InventoryMenu.AddItem(itemId, itemCount))
         {
-            Destroy(gameObject);
+            StartCoroutine(TipManager.ItemGet(itemId, itemCount));
+
+            Disable();
         }
+    }
+
+
+    protected override SaveLoadManager.SaveObjectId GetSaveObjectId()
+    {
+        return SaveLoadManager.SaveObjectId.itemGetter0;
     }
 }

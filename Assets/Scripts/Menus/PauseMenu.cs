@@ -47,33 +47,45 @@ public class PauseMenu : BaseMenu
     {
         while (true)
         {
-            if (Input.GetButtonDown("Beasts"))
+            if (EnemyChase.isNotInCombat)
             {
-                if (!isPaused)
-                    Pause();
-
-                BeastsMenu();
-                yield return new WaitForSecondsRealtime(0.1f);
-            }
-            else if (Input.GetButtonDown("Inventory"))
-            {
-                if (!isPaused)
-                    Pause();
-
-                InventoryMenu();
-                yield return new WaitForSecondsRealtime(0.1f);
-            }
-            else if (Input.GetButtonDown("Cancel"))
-            {
-                if (isPaused)
+                if (Input.GetButtonDown("Beasts"))
                 {
-                    Pause();
+                    if (!isPaused)
+                    {
+                        background.SetActive(true);
+                        Pause();
+                    }
 
-                    menu.settingsMenu.SetActive(false);
-                    menu.beastsMenu.SetActive(false);
-                    menu.inventoryMenu.SetActive(false);
+                    BeastsMenu();
+                    yield return new WaitForSecondsRealtime(0.1f);
                 }
-                yield return new WaitForSecondsRealtime(0.1f);
+                else if (Input.GetButtonDown("Inventory"))
+                {
+                    if (!isPaused)
+                    {
+                        background.SetActive(true);
+                        Pause();
+                    }
+
+                    InventoryMenu();
+                    yield return new WaitForSecondsRealtime(0.1f);
+                }
+                else if (Input.GetButtonDown("Cancel"))
+                {
+                    if (isPaused)
+                    {
+                        background.SetActive(false);
+                        Pause();
+
+                        menu.settingsMenu.SetActive(false);
+                        menu.beastsMenu.SetActive(false);
+                        menu.inventoryMenu.SetActive(false);
+
+                        TipManager.TooltipDisable();
+                    }
+                    yield return new WaitForSecondsRealtime(0.1f);
+                }
             }
             yield return null;
         }
@@ -130,25 +142,23 @@ public class PauseMenu : BaseMenu
         {
             i.enabled = isPaused;
         }
+        TipManager.Pause();
 
         isPaused = !isPaused;
 
-        background.SetActive(isPaused);
-
         Time.timeScale = isPaused ? 0 : 1;
         MouseManager.SetMouseMode(isPaused);
-
-        Mathf.Round(0.5f);
     }
 
 
     static List<MonoBehaviour> GetPauseComponents()
     {
-        List<MonoBehaviour> components = new List<MonoBehaviour>();
+        List<MonoBehaviour> components = new List<MonoBehaviour>
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>()
+        };
 
-        components.Add(GameObject.FindGameObjectWithTag("Player").GetComponent<Player>());
-
-        foreach(var i in GameObject.FindGameObjectsWithTag("Enemy"))
+        foreach (var i in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             components.Add(i.GetComponent<Enemy>());
         }

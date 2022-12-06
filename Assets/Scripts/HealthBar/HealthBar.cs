@@ -16,13 +16,13 @@ public class HealthBar : MonoBehaviour
     }
 
 
-    public virtual void MaxHealthPoint(int health)
+    public virtual void MaxHealthPoint(float health)
     {
         slider.maxValue = health;
         slider.value = health;
     }
 
-    public virtual void HealthPoint(int health)
+    public virtual void HealthPoint(float health)
     {
         slider.value = health;
     }

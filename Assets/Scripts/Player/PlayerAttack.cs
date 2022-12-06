@@ -2,48 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : CharacterAttack
 {
-    public Transform attackPoint;
-
-    public LayerMask LayerEnemy;
-
-    private float attackRange = 1f;
-    private int Damage = 20;
-
-    PlayerHealth game;
-    Player playerRoll;
-
-    void Start()
+    protected override bool IsAttackable(Collider2D collision)
     {
-        game = GetComponent<PlayerHealth>();
-        playerRoll = GetComponent<Player>();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && playerRoll.roll == false)
-        {
-            Attack();
-        }
-    }
-    void Attack()
-    {
-        
-        Collider2D[] hit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, LayerEnemy);
-
-        //animator.SetTrigger("Attack");
-
-        foreach (Collider2D enemy in hit)
-        {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(Damage);
-        }
-    }
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-
-        //Gizmos.DrawSphere(attackPoint.position, attackRange);
+        return collision.CompareTag("Enemy");
     }
 }

@@ -1,24 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 [RequireComponent(typeof(Collider2D))]
 public abstract class CharacterAttack : MonoBehaviour
 {
-    public float chargeTime;
-    [SerializeField]
-    float attackTime;
-    public float rechargeTime;
+    Character character;
 
     new Collider2D collider;
+    
+    public float chargeTime { get; private set; }
+    public float rechargeTime { get; private set; }
 
     [SerializeField]
-    int damage;
+    float damage;
 
 
     void Awake()
     {
-        collider = GetComponent<Collider2D>();
+        collider  = GetComponent<Collider2D>();
+        character = GetComponentInParent<Character>();
 
 #if DEBUG
         collider.enabled = false;
@@ -30,15 +32,17 @@ public abstract class CharacterAttack : MonoBehaviour
     {
         if (IsAttackable(collision))
         {
-            collision.GetComponent<Character>().TakeDamage(damage);
+            collision.GetComponent<Character>().TakeDamage(damage * character.GetAttackPercantageBuff());
         }
     }
 
 
-    public IEnumerator Attack()
+    public IEnumerator Attack(string attackName)
     {
         collider.enabled = true;
-        yield return new WaitForSeconds(attackTime);
+        character.animator.SetBool(attackName, true);
+        yield return new WaitWhile(() => character.animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f);
+        character.animator.SetBool(attackName, false);
         collider.enabled = false;
     }
 

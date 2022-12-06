@@ -20,13 +20,13 @@ public class PlayerHealthBar : HealthBar
     }
 
 
-    public override void MaxHealthPoint(int health)
+    public override void MaxHealthPoint(float health)
     {
         base.MaxHealthPoint(health);
 
         fill.color = gradient.Evaluate(1f);
     }
-    public override void HealthPoint(int health)
+    public override void HealthPoint(float health)
     {
         base.HealthPoint(health);
 

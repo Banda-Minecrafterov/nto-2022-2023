@@ -1,21 +1,30 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
-public class ItemTaker : Interactable
+public class ItemTaker : InteractableDisableIfInteract
 {
     [SerializeField]
-    UInt32 id;
+    UInt32 itemId;
     [SerializeField]
-    UInt32 count;
+    UInt32 itemCount;
 
 
     protected override void Interact()
     {
-        if (InventoryMenu.RemoveItem(id, count))
+        if (InventoryMenu.RemoveItem(itemId, itemCount))
         {
-            Destroy(gameObject);
+            StartCoroutine(TipManager.ItemTake(itemId, itemCount));
+
+            Disable();
         }
+    }
+
+
+    protected override SaveLoadManager.SaveObjectId GetSaveObjectId()
+    {
+        return SaveLoadManager.SaveObjectId.itemTaker0;
     }
 }

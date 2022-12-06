@@ -185,8 +185,8 @@ TextureImporter:
         serializedVersion: 2
         x: 216
         y: 862
-        width: 143
-        height: 38
+        width: 52
+        height: 28
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -473,6 +473,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: "10\u0440\u0430\u0437\u043D\u043E\u0435_17"
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 890
+        width: 17
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec1f6b4811301134985bf258d9742ad9
+      internalID: -2097213673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -499,6 +520,7 @@ TextureImporter:
       "10\u0440\u0430\u0437\u043D\u043E\u0435_3": 1935853152
       "10\u0440\u0430\u0437\u043D\u043E\u0435_15": 1725127764
       "10\u0440\u0430\u0437\u043D\u043E\u0435_11": -1622544771
+      "10\u0440\u0430\u0437\u043D\u043E\u0435_17": -2097213673
       "10\u0440\u0430\u0437\u043D\u043E\u0435_10": -1670905331
       "10\u0440\u0430\u0437\u043D\u043E\u0435_2": -27502664
   spritePackingTag: 

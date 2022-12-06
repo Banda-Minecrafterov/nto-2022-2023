@@ -1,20 +1,40 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
+
 [RequireComponent(typeof(EnemyHealth))]
-[RequireComponent(typeof(AIPath))]
+[RequireComponent(typeof(EnemyMovement))]
 public class Enemy : Character
 {
-    AIPath path;
+    EnemyMovement path;
+
+    Coroutine startAttacking;
 
 
-    void Awake()
+    new void Awake()
     {
-        path = GetComponent<AIPath>();
+        path = GetComponent<EnemyMovement>();
 
-        StartCoroutine(Attack());
+        base.Awake();
+    }
+
+
+    public void StartAttacking()
+    {
+        startAttacking = StartCoroutine(Attack());
+    }
+
+    public bool StopAttacking()
+    {
+        try
+        {
+            StopCoroutine(startAttacking);
+        }
+        catch { return false; }
+        return true;
     }
 
 
@@ -22,14 +42,11 @@ public class Enemy : Character
     {
         while (true)
         {
-            while (path.reachedEndOfPath)
-            {
-                path.enabled = false;
-                yield return new WaitForSeconds(attack[0].chargeTime);
-                StartCoroutine(attack[0].Attack());
-                yield return new WaitForSeconds(attack[0].rechargeTime);
-                path.enabled = true;
-            }
+            path.enabled = false;
+            yield return new WaitForSeconds(attack[0].chargeTime);
+            StartCoroutine(attack[0].Attack("Enemy Attack 0"));
+            yield return new WaitForSeconds(attack[0].rechargeTime);
+            path.enabled = true;
             yield return null;
         }
     }

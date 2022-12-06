@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class CharacterHealth : MonoBehaviour
 {
     [SerializeField]
-    int maxHealth = 100;
-    int currentHealth;
+    public float maxHealth     { get; private set; } = 100;
+    public float currentHealth { get; private set; }
 
     [SerializeField]
     HealthBar healthBar;
@@ -19,7 +19,7 @@ public abstract class CharacterHealth : MonoBehaviour
     }
 
 
-    public bool TakeDamage(int damage)
+    public virtual bool TakeDamage(float damage)
     {
         currentHealth -= damage;
 
@@ -29,11 +29,23 @@ public abstract class CharacterHealth : MonoBehaviour
             Die();
             return true;
         }
-        else
-        {
-            healthBar.HealthPoint(currentHealth);
+
+        healthBar.HealthPoint(currentHealth);
+        return false;
+    }
+
+    public virtual bool RestoreHealth(int heal)
+    {
+        if (currentHealth == maxHealth)
             return false;
-        }
+
+        currentHealth += heal;
+
+        if (currentHealth > maxHealth)
+            currentHealth = heal;
+
+        healthBar.HealthPoint(currentHealth);
+        return true;
     }
 
 

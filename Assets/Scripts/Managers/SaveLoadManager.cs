@@ -8,8 +8,11 @@ public class SaveLoadManager
 {
     public enum SaveObjectId
     {
-        invSlot0 = 0, invSlot35 = invSlot0 + 35,
+        invSlot0 = 0, invSlot26 = invSlot0 + 26,
+        handSlot0, handSlot3 = handSlot0 + 3,
         openWhenInteracted0,
+        itemGetter0,
+        itemTaker0,
         size,
     }
 

@@ -3,22 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class OpenWhenInteracted : Interactable, ISaveLoadData
+public class OpenWhenInteracted : InteractableDisableIfInteract
 {
     [SerializeField]
     SpriteRenderer open;
 
     [SerializeField]
     float speed;
-
-    [SerializeField]
-    int id;
-
-
-    void Awake()
-    {
-        SaveLoadManager.AddObject(SaveLoadManager.SaveObjectId.openWhenInteracted0 + id, this);
-    }
 
 
     protected override void Interact()
@@ -44,7 +35,7 @@ public class OpenWhenInteracted : Interactable, ISaveLoadData
         open.gameObject.SetActive(false);
 
         GetComponent<Collider2D>().enabled = false;
-        foreach(var i in GetComponentsInChildren<Collider2D>())
+        foreach (var i in GetComponentsInChildren<Collider2D>())
         {
             i.enabled = false;
         }
@@ -53,16 +44,8 @@ public class OpenWhenInteracted : Interactable, ISaveLoadData
     }
 
 
-    public void Load(ref BinaryReader data, int version)
+    protected override SaveLoadManager.SaveObjectId GetSaveObjectId()
     {
-        if (!data.ReadBoolean())
-        {
-            Interact();
-        }
-    }
-
-    public void Save(ref BinaryWriter data)
-    {
-        data.Write(open.gameObject.activeSelf);
+        return SaveLoadManager.SaveObjectId.openWhenInteracted0;
     }
 }
