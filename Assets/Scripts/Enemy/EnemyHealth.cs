@@ -1,11 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : CharacterHealth
 {
-    protected override void Die()
+    [SerializeField]
+    int sunEnergy;
+
+
+    public override bool TakeDamage(float damage)
     {
-        Destroy(gameObject);
+        if (base.TakeDamage(damage))
+        {
+            gameObject.SetActive(false);
+
+            UpgradeManager.AddSunEnergy(sunEnergy);
+            return true;
+        }
+        return false;
     }
 }

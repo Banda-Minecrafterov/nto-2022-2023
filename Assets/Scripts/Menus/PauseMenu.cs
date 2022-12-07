@@ -16,6 +16,8 @@ public class PauseMenu : BaseMenu
 
     [SerializeField]
     GameObject saveMenu;
+    [SerializeField]
+    GameObject upgradeMenu;
 
     [SerializeField]
     GameObject background;
@@ -133,6 +135,12 @@ public class PauseMenu : BaseMenu
     {
         menu.Pause();
         menu.saveMenu.SetActive(isPaused);
+    }
+
+    public static void UpgradeMenu()
+    {
+        menu.Pause();
+        menu.upgradeMenu.SetActive(isPaused);
     }
 
 

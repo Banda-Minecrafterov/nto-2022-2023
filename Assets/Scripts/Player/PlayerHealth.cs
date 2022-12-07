@@ -1,26 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
-public class PlayerHealth : CharacterHealth
+public class PlayerHealth : CharacterHealth, ISaveLoadData
 {
+    new void Awake()
+    {
+        SaveLoadManager.AddObject(SaveLoadManager.SaveObjectId.PlayerHealth, this);
+
+        base.Awake();
+    }
+
+
     public override bool TakeDamage(float damage)
     {
         bool isDead = base.TakeDamage(damage);
         InventoryManager.TakeDamage(isDead);
+
+        if (isDead)
+            Debug.Log("Player dead");
         return isDead;
     }
 
     public override bool RestoreHealth(int heal)
     {
-        bool isFull = base.RestoreHealth(heal);
-        InventoryManager.RestoreHealth(isFull || currentHealth == maxHealth);
-        return isFull;
+        if (base.RestoreHealth(heal))
+        {
+            InventoryManager.RestoreHealth(currentHealth == character.maxHealth);
+            return true;
+        }
+        return false;
     }
 
 
-    protected override void Die()
+    public void Save(ref BinaryWriter data)
     {
-        Debug.Log("Player dead");
+        data.Write(currentHealth);
+    }
+
+    public void Load(ref BinaryReader data, int version)
+    {
+        currentHealth = data.ReadInt32();
+
+        Init();
+        healthBar.HealthPoint(currentHealth);
     }
 }

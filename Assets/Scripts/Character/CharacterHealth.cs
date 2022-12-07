@@ -1,21 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
+[RequireComponent(typeof(Character))]
 public abstract class CharacterHealth : MonoBehaviour
 {
     [SerializeField]
-    public float maxHealth     { get; private set; } = 100;
-    public float currentHealth { get; private set; }
+    protected HealthBar healthBar;
 
-    [SerializeField]
-    HealthBar healthBar;
+    protected Character character { get; private set; }
 
+    public float currentHealth { get; protected set; }
+
+
+    protected void Awake()
+    {
+        character = GetComponent<Character>();
+        currentHealth = character.maxHealth;
+    }
 
     void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.MaxHealthPoint(maxHealth);
+        Init();
+    }
+
+
+    protected void Init()
+    {
+        healthBar.MaxHealthPoint(character.maxHealth);
     }
 
 
@@ -26,7 +39,6 @@ public abstract class CharacterHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             healthBar.HealthPoint(0);
-            Die();
             return true;
         }
 
@@ -36,18 +48,15 @@ public abstract class CharacterHealth : MonoBehaviour
 
     public virtual bool RestoreHealth(int heal)
     {
-        if (currentHealth == maxHealth)
+        if (currentHealth == character.maxHealth)
             return false;
 
         currentHealth += heal;
 
-        if (currentHealth > maxHealth)
+        if (currentHealth > character.maxHealth)
             currentHealth = heal;
 
         healthBar.HealthPoint(currentHealth);
         return true;
     }
-
-
-    protected abstract void Die();
 }

@@ -33,6 +33,5 @@ public class LoadSceneManager : MonoBehaviour
         Destroy(this);
 
         Debug.Log("Stop loading: " + scene);
-        yield return null;
     }
 }

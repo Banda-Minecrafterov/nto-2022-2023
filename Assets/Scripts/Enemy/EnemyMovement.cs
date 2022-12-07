@@ -1,8 +1,8 @@
 using Pathfinding;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(AIDestinationSetter))]
 public class EnemyMovement : AIPath
 {
     Enemy enemy;

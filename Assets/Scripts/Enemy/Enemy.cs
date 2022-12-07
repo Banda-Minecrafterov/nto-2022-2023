@@ -1,13 +1,11 @@
-using Pathfinding;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.IO;
 using UnityEngine;
 
 
 [RequireComponent(typeof(EnemyHealth))]
 [RequireComponent(typeof(EnemyMovement))]
-public class Enemy : Character
+public class Enemy : Character, ISaveLoadData
 {
     EnemyMovement path;
 
@@ -16,6 +14,8 @@ public class Enemy : Character
 
     new void Awake()
     {
+        SaveLoadManager.AddObject(SaveLoadManager.SaveObjectId.Enemy0 + transform.GetSiblingIndex(), this);
+
         path = GetComponent<EnemyMovement>();
 
         base.Awake();
@@ -43,11 +43,23 @@ public class Enemy : Character
         while (true)
         {
             path.enabled = false;
-            yield return new WaitForSeconds(attack[0].chargeTime);
-            StartCoroutine(attack[0].Attack("Enemy Attack 0"));
-            yield return new WaitForSeconds(attack[0].rechargeTime);
+            yield return StartCoroutine(attack[0].Attack());
             path.enabled = true;
             yield return null;
+        }
+    }
+
+
+    public void Save(ref BinaryWriter data)
+    {
+        data.Write(!gameObject.activeSelf);
+    }
+
+    public void Load(ref BinaryReader data, int version)
+    {
+        if (data.ReadBoolean())
+        {
+            gameObject.SetActive(false);
         }
     }
 }

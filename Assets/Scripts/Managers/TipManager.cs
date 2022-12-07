@@ -1,11 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.VersionControl;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class TipManager : MonoBehaviour
 {
@@ -57,14 +53,14 @@ public class TipManager : MonoBehaviour
 
         switch (data)
         {
-            case HealItem obj:
+            case HealItemData obj:
                 count = 1;
 
                 current = tipManager.tooltip.GetChild(count);
                 current.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = obj.heal.ToString();
                 break;
 
-            case BuffWhileFullHPItem obj:
+            case BuffWhileFullHPItemData obj:
                 count = 2;
 
                 current = tipManager.tooltip.GetChild(count);

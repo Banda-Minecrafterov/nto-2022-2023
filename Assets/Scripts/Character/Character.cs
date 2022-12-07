@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +9,79 @@ public class Character : MonoBehaviour
     CharacterHealth health;
     [SerializeField]
     protected CharacterAttack[] attack;
+
     [SerializeField]
-    List<CharacterBuff> buffs;
+    List<CharacterBuff> tempBuffs;
+    [SerializeField]
+    CharacterBuff stats;
+
+    public float pureAttackPercantage
+    {
+        get
+        {
+            float pureAttackPercantage = stats.attackPercentage;
+
+            foreach (var i in tempBuffs)
+            {
+                pureAttackPercantage /= i.attackPercentage;
+            }
+
+            return pureAttackPercantage;
+        }
+    }
+
+    public float pureAttackPlus
+    {
+        get
+        {
+            float pureAttackPlus = stats.attackPlus;
+
+            foreach (var i in tempBuffs)
+            {
+                pureAttackPlus -= i.attackPlus;
+            }
+
+            return pureAttackPlus;
+        }
+    }
+
+    public float pureMaxHealthPercantage
+    {
+        get
+        {
+            float pureMaxHealthPercantage = stats.maxHealthPercantage;
+
+            foreach (var i in tempBuffs)
+            {
+                pureMaxHealthPercantage /= i.maxHealthPercantage;
+            }
+
+            return pureMaxHealthPercantage;
+        }
+    }
+
+    public float pureMaxHealthPlus
+    {
+        get
+        {
+            float pureMaxHealthPlus = stats.maxHealthPlus;
+
+            foreach (var i in tempBuffs)
+            {
+                pureMaxHealthPlus -= i.maxHealthPlus;
+            }
+
+            return pureMaxHealthPlus;
+        }
+    }
+
+    public float maxHealth
+    {
+        get
+        {
+            return GetMaxHealth(1.0f, stats.maxHealthPercantage, 0.0f, stats.maxHealthPlus);
+        }
+    }
 
     public Animator animator { get; private set; }
 
@@ -33,23 +103,61 @@ public class Character : MonoBehaviour
     }
 
 
-    public void AddBuff(CharacterBuff buff)
+    public void AddTempBuff(CharacterBuff buff)
     {
-        buffs.Add(buff);
+        tempBuffs.Add(buff);
+        AddBuff(buff);
     }
 
-    public bool DeleteBuff(CharacterBuff buff)
+    public bool RemoveTempBuff(CharacterBuff buff)
     {
-        return buffs.Remove(buff);
-    }
-
-    public float GetAttackPercantageBuff()
-    {
-        float percantage = 1.0f;
-        foreach (var i in buffs)
+        if (tempBuffs.Remove(buff))
         {
-            percantage *= i.attackPercentage;
+            RemoveBuff(buff);
+            return true;
         }
-        return percantage;
+        return false;
+    }
+
+
+    public void AddPermBuff(CharacterBuff buff)
+    {
+        AddBuff(buff);
+    }
+
+
+    void AddBuff(CharacterBuff buff)
+    {
+        stats.attackPercentage *= buff.attackPercentage;
+        stats.attackPlus       += buff.attackPlus;
+
+        stats.maxHealthPercantage *= buff.maxHealthPercantage;
+        stats.maxHealthPlus       += buff.maxHealthPlus;
+    }
+
+    void RemoveBuff(CharacterBuff buff)
+    {
+        stats.attackPercentage /= buff.attackPercentage;
+        stats.attackPlus       -= buff.attackPlus;
+
+        stats.maxHealthPercantage /= buff.maxHealthPercantage;
+        stats.maxHealthPlus       -= buff.maxHealthPlus;
+    }
+
+
+    public float GetAttack(float attackPercantage, float attackPlus)
+    {
+        return GetAttack(attackPercantage, stats.attackPercentage, attackPlus, stats.attackPlus);
+    }
+
+
+    public static float GetAttack(float attackPercantage, float origAttackPercantage, float attackPlus, float origAttackPlus)
+    {
+        return attackPercantage * origAttackPercantage * (attackPlus + origAttackPlus);
+    }
+
+    public static float GetMaxHealth(float maxHealthPercantage, float origMaxHealthPercantage, float maxHealthPlus, float origMaxHealthPlus)
+    {
+        return maxHealthPercantage * origMaxHealthPercantage * (maxHealthPlus + origMaxHealthPlus);
     }
 }

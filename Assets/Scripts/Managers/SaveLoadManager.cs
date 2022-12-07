@@ -1,22 +1,26 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 
 public class SaveLoadManager
 {
     public enum SaveObjectId
     {
-        invSlot0 = 0, invSlot26 = invSlot0 + 26,
-        handSlot0, handSlot3 = handSlot0 + 3,
-        openWhenInteracted0,
-        itemGetter0,
-        itemTaker0,
-        size,
+        InvSlot0 = 0, InvSlot26 = InvSlot0 + 26,
+        HandSlot0, HandSlot3 = HandSlot0 + 3,
+
+        Interctable0, Interctable1 = Interctable0 + 1,
+
+        Enemy0,
+
+        Player, PlayerHealth,
+
+        Tutorial,
+        UpgradeManager,
+
+        Count,
     }
 
-    static ISaveLoadData[] saveObjects = new ISaveLoadData[(int)SaveObjectId.size];
+    static ISaveLoadData[] saveObjects = new ISaveLoadData[(int)SaveObjectId.Count];
 
 
     public static void AddObject(SaveObjectId id, ISaveLoadData data)
@@ -31,6 +35,7 @@ public class SaveLoadManager
 
         foreach (var i in saveObjects)
         {
+            //Debug.Log(Array.FindIndex(saveObjects, x => x == i));
             i.Save(ref data);
         }
     }

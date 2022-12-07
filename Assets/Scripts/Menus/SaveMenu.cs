@@ -1,16 +1,5 @@
 public class SaveMenu : SaveLoadMenu
 {
-    void OnEnable()
-    {
-        MouseManager.SetMouseMode(true);
-    }
-
-    void OnDisable()
-    {
-        MouseManager.SetMouseMode(false);
-    }
-
-
     public void Save(int id)
     {
         ((SaveData)datas[id]).Save(id);

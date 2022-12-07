@@ -49,6 +49,8 @@ public class Manager : MonoBehaviour
 
     public static void FinishLoadScreen()
     {
-        manager.GetComponent<LoadData>()?.Load();
+        LoadData comp;
+        if (manager.TryGetComponent<LoadData>(out comp))
+            comp.Load();
     }
 }
