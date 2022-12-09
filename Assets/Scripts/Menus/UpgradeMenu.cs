@@ -5,9 +5,13 @@ using UnityEngine.UI;
 public class UpgradeMenu : BaseMenu
 {
     [SerializeField]
+    Button saveButton;
+    [SerializeField]
     Transform upgradeButtons;
 
-    public static UpgradeMenu menu { get; private set; }
+    Idol idol;
+
+    static UpgradeMenu menu;
 
 
     void Awake()
@@ -23,15 +27,22 @@ public class UpgradeMenu : BaseMenu
     }
 
 
-    public void Back()
+    public void Open(Idol idol)
     {
-        PauseMenu.UpgradeMenu();
+        this.idol = idol;
+        saveButton.interactable = idol.isSaveable;
+    }
+
+
+    public void OpenSaveMenu()
+    {
+        Settings(gameObject, PauseMenu.saveMenu.gameObject);
+        PauseMenu.saveMenu.Open(idol);
     }
 
 
     public void Upgrade(Transform button)
     {
-        Debug.Log("LoadButton");
         UpgradeData.Type type = (UpgradeData.Type)button.GetSiblingIndex();
 
         UpdateButton(type, UpgradeManager.Upgrade(type));

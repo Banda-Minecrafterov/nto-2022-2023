@@ -9,8 +9,6 @@ public class Enemy : Character, ISaveLoadData
 {
     EnemyMovement path;
 
-    Coroutine startAttacking;
-
 
     new void Awake()
     {
@@ -22,40 +20,25 @@ public class Enemy : Character, ISaveLoadData
     }
 
 
-    public void StartAttacking()
+    public void StartAttack()
     {
-        startAttacking = StartCoroutine(Attack());
+        path.enabled = false;
+        base.StartAttack(0);
     }
 
-    public bool StopAttacking()
+    public override void StopAttack()
     {
-        try
-        {
-            StopCoroutine(startAttacking);
-        }
-        catch { return false; }
-        return true;
+        path.enabled = true;
+        base.StopAttack();
     }
 
 
-    IEnumerator Attack()
-    {
-        while (true)
-        {
-            path.enabled = false;
-            yield return StartCoroutine(attack[0].Attack());
-            path.enabled = true;
-            yield return null;
-        }
-    }
-
-
-    public void Save(ref BinaryWriter data)
+    public void Save(BinaryWriter data)
     {
         data.Write(!gameObject.activeSelf);
     }
 
-    public void Load(ref BinaryReader data, int version)
+    public void Load(BinaryReader data, int version)
     {
         if (data.ReadBoolean())
         {

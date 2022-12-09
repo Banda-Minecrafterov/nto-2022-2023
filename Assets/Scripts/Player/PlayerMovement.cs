@@ -1,10 +1,15 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Character))]
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
+
+    new Collider2D collider;
 
     float horizontal;
     float vertical;
@@ -13,25 +18,22 @@ public class PlayerMovement : MonoBehaviour
     float diagonallSpeed = 85.0f;
     [SerializeField]
     float speed = 80.0f;
-
     [SerializeField]
-    float dashSpeed;
-    float dashTime;
+    float dashSpeed = 80.0f;
     [SerializeField]
-    float startDashTime;
-    int direction;
+    float dashTime = 80.0f;
 
     Vector2 lastChangedMovement = Vector2.zero;
-    Vector2 animValues = Vector2.zero;
 
-    Character character;
+    Player character;
 
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
 
-        character = GetComponent<Character>();
+        character = GetComponent<Player>();
     }
 
     void Update()
@@ -39,7 +41,33 @@ public class PlayerMovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical   = Input.GetAxisRaw("Vertical");
 
-        Roll();
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (horizontal == 0.0f && vertical == 0.0f)
+            {
+                var state = character.animator.GetCurrentAnimatorStateInfo(0);
+                if (state.IsName("Up_idle"))
+                {
+                    StartCoroutine(Dash(new Vector2(0.0f, 1.0f)));
+                }
+                else if (state.IsName("Down_idle"))
+                {
+                    StartCoroutine(Dash(new Vector2(0.0f, -1.0f)));
+                }
+                else if (state.IsName("Left_idle"))
+                {
+                    StartCoroutine(Dash(new Vector2(-1.0f, 0.0f)));
+                }
+                else if (state.IsName("Right_idle"))
+                {
+                    StartCoroutine(Dash(new Vector2(1.0f, 0.0f)));
+                }
+            }
+            else
+            {
+                StartCoroutine(Dash(new Vector2(horizontal, vertical)));
+            }
+        }
     }
 
     void FixedUpdate()
@@ -48,10 +76,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (move.x == 0.0f || move.y == 0.0f)
         {
-            animValues = move;
-
-            character.animator.SetFloat("Speed X", animValues.x);
-            character.animator.SetFloat("Speed Y", animValues.y);
+            character.animator.SetFloat("Speed X", move.x);
+            character.animator.SetFloat("Speed Y", move.y);
 
             lastChangedMovement = move;
 
@@ -61,33 +87,23 @@ public class PlayerMovement : MonoBehaviour
         {
             if (lastChangedMovement.x != move.x)
             {
-                if (lastChangedMovement.y != move.y)
+                if (lastChangedMovement.y == move.y || Random.Range(0, 1) == 0)
                 {
-                    if (UnityEngine.Random.Range(0, 1) == 0)
-                    {
-                        animValues = new Vector2(move.x, 0.0f);
-                    }
-                    else
-                    {
-                        animValues = new Vector2(0.0f, move.y);
-                    }
+                    character.animator.SetFloat("Speed X", move.x);
+                    character.animator.SetFloat("Speed Y", 0.0f);
                 }
                 else
                 {
-                    animValues = new Vector2(move.x, 0.0f);
+                    character.animator.SetFloat("Speed X", 0.0f);
+                    character.animator.SetFloat("Speed Y", move.y);
                 }
-
-                character.animator.SetFloat("Speed X", animValues.x);
-                character.animator.SetFloat("Speed Y", animValues.y);
             }
             else
             {
                 if (lastChangedMovement.y != move.y)
                 {
-                    animValues = new Vector2(0.0f, move.y);
-
-                    character.animator.SetFloat("Speed X", animValues.x);
-                    character.animator.SetFloat("Speed Y", animValues.y);
+                    character.animator.SetFloat("Speed X", 0.0f);
+                    character.animator.SetFloat("Speed Y", move.y);
                 }
             }
             lastChangedMovement = move;
@@ -100,65 +116,42 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDisable()
     {
+        horizontal = 0.0f;
+        vertical = 0.0f;
+
         rb.velocity = Vector2.zero;
     }
 
 
-    void Roll()
+    IEnumerator Dash(Vector2 direction)
     {
-        if (direction == 0)
+        if (character.stamina.DecreaseStamina(20.0f))
         {
-            if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftShift))
+            if (direction.x == 0.0f || direction.y == 0.0f)
             {
-                direction = 1;
-            }
-            else if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                direction = 2;
-            }
-            else if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                direction = 3;
-            }
-            else if (Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                direction = 4;
-            }
-        }
-        else
-        {
-            if (dashTime <= 0)
-            {
-                direction = 0;
-                dashTime = startDashTime;
-                rb.velocity = Vector2.zero;
-                //roll = false;
+                direction *= dashSpeed;
             }
             else
             {
-                dashTime -= Time.deltaTime;
-
-                if (direction == 1)
-                {
-                    //roll = true;
-                    rb.velocity = Vector2.up * dashSpeed;
-                }
-                else if (direction == 2)
-                {
-                    //roll = true;
-                    rb.velocity = Vector2.down * dashSpeed;
-                }
-                else if (direction == 3)
-                {
-                    //roll = true;
-                    rb.velocity = Vector2.right * dashSpeed;
-                }
-                else
-                {
-                    //roll = true;
-                    rb.velocity = Vector2.left * dashSpeed;
-                }
+                direction = direction.normalized * dashSpeed * diagonallSpeed / speed;
             }
+
+            character.enabled = false;
+            EnemyAttack.DisableAttacks();
+
+            float time = 0.0f;
+            while (time < dashTime)
+            {
+                rb.velocity = direction;
+
+                yield return new WaitForSeconds(Time.fixedDeltaTime);
+
+                time += Time.fixedDeltaTime;
+            }
+            rb.velocity = Vector2.zero;
+
+            EnemyAttack.EnableAttacks();
+            character.enabled = true;
         }
     }
 }

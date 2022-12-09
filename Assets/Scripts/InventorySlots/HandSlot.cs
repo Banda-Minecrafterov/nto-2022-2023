@@ -1,7 +1,9 @@
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class HandSlot : InventorySlot
 {
+    [SerializeField]
     GameSlot gameSlot;
 
 

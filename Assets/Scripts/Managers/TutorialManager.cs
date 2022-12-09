@@ -9,12 +9,12 @@ public class TutorialManager : MonoBehaviour, ISaveLoadData
     }
 
 
-    public void Load(ref BinaryReader data, int version)
+    public void Load(BinaryReader data, int version)
     {
         enabled = false;
     }
 
-    public void Save(ref BinaryWriter data)
+    public void Save(BinaryWriter data)
     {
     }
 }

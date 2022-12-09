@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     CharacterHealth health;
     [SerializeField]
     protected CharacterAttack[] attack;
+    protected CharacterAttack currentAttack = null;
 
     [SerializeField]
     List<CharacterBuff> tempBuffs;
@@ -159,5 +160,22 @@ public class Character : MonoBehaviour
     public static float GetMaxHealth(float maxHealthPercantage, float origMaxHealthPercantage, float maxHealthPlus, float origMaxHealthPlus)
     {
         return maxHealthPercantage * origMaxHealthPercantage * (maxHealthPlus + origMaxHealthPlus);
+    }
+
+
+    protected virtual void StartAttack(int attackId)
+    {
+        currentAttack = attack[attackId];
+        currentAttack.StartAttack();
+    }
+
+    public virtual void Attack()
+    {
+        currentAttack.Attack();
+    }
+
+    public virtual void StopAttack()
+    {
+        currentAttack.StopAttack();
     }
 }

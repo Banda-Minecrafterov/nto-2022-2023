@@ -17,15 +17,15 @@ public class EnemyMovement : AIPath
 
     public override void OnTargetReached()
     {
-        enemy.StartAttacking();
+        enemy.StartAttack();
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        if (waitingForPathCalculation)
+        if (!waitingForPathCalculation)
         {
-            enemy.StopAttacking();
+            OnTargetReached();
         }
     }
 }

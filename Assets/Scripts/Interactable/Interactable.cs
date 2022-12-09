@@ -1,10 +1,19 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Collider2D))]
 public abstract class Interactable : MonoBehaviour
 {
+    protected Animator animator { get; private set; }
+
     Coroutine interactCheck;
+
+
+    protected void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
 
     void OnTriggerEnter2D(Collider2D other)
@@ -26,8 +35,10 @@ public abstract class Interactable : MonoBehaviour
         {
             if (EnemyChase.isNotInCombat && !PauseMenu.isPaused && Input.GetButtonDown("Interact"))
             {
+                animator.SetBool("Interact", true);
                 Interact();
                 yield return new WaitForSeconds(0.1f);
+                animator.SetBool("Interact", false);
             }
             yield return null;
         }

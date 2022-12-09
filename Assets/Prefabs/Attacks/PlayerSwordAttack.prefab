@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3255840994882876290}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -46,8 +46,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 6.5694175, y: 4.777783}
-  m_Size: {x: 50.190018, y: 34.22791}
+  m_Offset: {x: 7, y: 14}
+  m_Size: {x: 66, y: 54}
   m_Direction: 1
 --- !u!114 &3255840994882876288
 MonoBehaviour:
@@ -62,7 +62,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Player Sword Attack
-  chargeTime: 0
   damagePercentage: 0
   damage: 10
-  rechargeTime: 0

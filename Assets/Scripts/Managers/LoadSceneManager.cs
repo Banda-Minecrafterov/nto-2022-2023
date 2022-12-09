@@ -2,19 +2,22 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class LoadSceneManager : MonoBehaviour
 {
-    public void LoadScene(string scene)
+    public static void LoadScene(string scene, int id = 0)
     {
-        SceneManager.LoadScene("Load Screen");
-        StartCoroutine(LoadSceneAsync(scene));
+        GameObject gameObject = new GameObject();
+        DontDestroyOnLoad(gameObject);
+        gameObject.AddComponent<LoadSceneManager>().StartCoroutine(LoadScene(scene, id, gameObject));
     }
 
 
-    IEnumerator LoadSceneAsync(string scene)
+    static IEnumerator LoadScene(string scene, int id, GameObject gameObject)
     {
+        SceneManager.LoadScene("Load Screen");
+
         yield return null;
+
         Debug.Log("Start loading: " + scene);
 
         AsyncOperation async = SceneManager.LoadSceneAsync(scene);
@@ -28,9 +31,11 @@ public class LoadSceneManager : MonoBehaviour
                 async.allowSceneActivation = true;
             yield return null;
         }
-        Manager.FinishLoadScreen();
 
-        Destroy(this);
+        if (scene == "Game")
+            SaveLoadManager.Load(id);
+
+        Destroy(gameObject);
 
         Debug.Log("Stop loading: " + scene);
     }

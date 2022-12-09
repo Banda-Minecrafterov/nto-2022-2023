@@ -1,14 +1,18 @@
 using System;
 using System.IO;
+using UnityEngine;
 
 public class SaveLoadManager
 {
+    public static int saveSlotsCount = 3;
+
+
     public enum SaveObjectId
     {
         InvSlot0 = 0, InvSlot26 = InvSlot0 + 26,
         HandSlot0, HandSlot3 = HandSlot0 + 3,
 
-        Interctable0, Interctable1 = Interctable0 + 1,
+        Interctable0, Interctable2 = Interctable0 + 2,
 
         Enemy0,
 
@@ -22,6 +26,8 @@ public class SaveLoadManager
 
     static ISaveLoadData[] saveObjects = new ISaveLoadData[(int)SaveObjectId.Count];
 
+    public static SaveLoadData[] saveLoadDatas { get; private set; } = new SaveLoadData[saveSlotsCount];
+
 
     public static void AddObject(SaveObjectId id, ISaveLoadData data)
     {
@@ -29,22 +35,39 @@ public class SaveLoadManager
     }
 
 
-    public static void SaveAll(ref BinaryWriter data, Int32 version)
+    public static void LoadFiles()
     {
-        data.Write(version);
+        if (saveLoadDatas[0] != null)
+            return;
 
-        foreach (var i in saveObjects)
+        for (int i = 0; i < saveSlotsCount; i++)
         {
-            //Debug.Log(Array.FindIndex(saveObjects, x => x == i));
-            i.Save(ref data);
+            saveLoadDatas[i] = new SaveLoadData(i);
         }
     }
 
-    public static void LoadAll(ref BinaryReader data, Int32 version)
+
+    public static void Save(int id)
     {
-        foreach (var i in saveObjects)
+        if (saveLoadDatas[id].PrepareSave(id))
         {
-            i.Load(ref data, version);
+            saveLoadDatas[id].writer.Write(saveLoadDatas[id].version);
+
+            foreach (var i in saveObjects)
+            {
+                i.Save(saveLoadDatas[id].writer);
+            }
+        }
+    }
+
+    public static void Load(int id)
+    {
+        if (saveLoadDatas[id].PrepareLoad())
+        {
+            foreach (var i in saveObjects)
+            {
+                i.Load(saveLoadDatas[id].reader, saveLoadDatas[id].version);
+            }
         }
     }
 }

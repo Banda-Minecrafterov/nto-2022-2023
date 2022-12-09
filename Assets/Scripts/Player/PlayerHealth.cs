@@ -11,13 +11,23 @@ public class PlayerHealth : CharacterHealth, ISaveLoadData
     }
 
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+            TakeDamage(10000);
+    }
+
+
     public override bool TakeDamage(float damage)
     {
         bool isDead = base.TakeDamage(damage);
         InventoryManager.TakeDamage(isDead);
 
         if (isDead)
-            Debug.Log("Player dead");
+        {
+            character.enabled = false;
+            PauseMenu.LoadMenu();
+        }
         return isDead;
     }
 
@@ -32,16 +42,16 @@ public class PlayerHealth : CharacterHealth, ISaveLoadData
     }
 
 
-    public void Save(ref BinaryWriter data)
+    public void Save(BinaryWriter data)
     {
         data.Write(currentHealth);
     }
 
-    public void Load(ref BinaryReader data, int version)
+    public void Load(BinaryReader data, int version)
     {
         currentHealth = data.ReadInt32();
 
         Init();
-        healthBar.HealthPoint(currentHealth);
+        healthBar.SetValue(currentHealth);
     }
 }

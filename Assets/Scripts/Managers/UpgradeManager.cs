@@ -8,7 +8,7 @@ public class UpgradeManager : MonoBehaviour, ISaveLoadData
 
     public static UpgradeData[] currentUpgrade { get; private set; } = new UpgradeData[(int)UpgradeData.Type.Count];
 
-    public static int sunEnergy { get; private set; } = 120;
+    public static int sunEnergy { get; private set; } = 0;
 
     public static UpgradeManager manager { get; private set; }
 
@@ -51,7 +51,7 @@ public class UpgradeManager : MonoBehaviour, ISaveLoadData
     }
 
 
-    public void Save(ref BinaryWriter data)
+    public void Save(BinaryWriter data)
     {
         data.Write(sunEnergy);
         for (int i = 0; i < (int)UpgradeData.Type.Count; i++)
@@ -60,7 +60,7 @@ public class UpgradeManager : MonoBehaviour, ISaveLoadData
         }
     }
 
-    public void Load(ref BinaryReader data, int version)
+    public void Load(BinaryReader data, int version)
     {
         sunEnergy = data.ReadInt32();
         for (int i = 0; i < (int)UpgradeData.Type.Count; i++)

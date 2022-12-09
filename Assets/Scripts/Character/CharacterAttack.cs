@@ -12,13 +12,9 @@ public abstract class CharacterAttack : MonoBehaviour
     string attackName;
 
     [SerializeField]
-    float chargeTime;
-    [SerializeField]
     float damagePercentage;
     [SerializeField]
     float damage;
-    [SerializeField]
-    float rechargeTime;
 
 
     void Awake()
@@ -41,15 +37,20 @@ public abstract class CharacterAttack : MonoBehaviour
     }
 
 
-    public IEnumerator Attack()
+    public virtual void StartAttack()
     {
-        yield return new WaitForSeconds(chargeTime);
-        collider.enabled = true;
         character.animator.SetBool(attackName, true);
-        yield return new WaitWhile(() => character.animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f);
-        character.animator.SetBool(attackName, false);
+    }
+
+    public virtual void Attack()
+    {
+        collider.enabled = true;
+    }
+
+    public virtual void StopAttack()
+    {
         collider.enabled = false;
-        yield return new WaitForSeconds(rechargeTime);
+        character.animator.SetBool(attackName, false);
     }
 
 

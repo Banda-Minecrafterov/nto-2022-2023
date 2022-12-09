@@ -3,9 +3,11 @@ using UnityEngine;
 
 public abstract class SaveableInteractable : Interactable, ISaveLoadData
 {
-    void Awake()
+    new void Awake()
     {
         SaveLoadManager.AddObject(SaveLoadManager.SaveObjectId.Interctable0 + transform.GetSiblingIndex(), this);
+
+        base.Awake();
     }
 
 
@@ -16,7 +18,7 @@ public abstract class SaveableInteractable : Interactable, ISaveLoadData
     }
 
 
-    public void Load(ref BinaryReader data, int version)
+    public virtual void Load(BinaryReader data, int version)
     {
         if (data.ReadBoolean())
         {
@@ -24,7 +26,7 @@ public abstract class SaveableInteractable : Interactable, ISaveLoadData
         }
     }
 
-    public void Save(ref BinaryWriter data)
+    public virtual void Save(BinaryWriter data)
     {
         data.Write(!GetComponent<Collider2D>().enabled);
     }

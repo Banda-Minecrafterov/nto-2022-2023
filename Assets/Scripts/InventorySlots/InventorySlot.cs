@@ -160,7 +160,7 @@ public class InventorySlot : ItemSlot,
     }
 
 
-    public void Save(ref BinaryWriter data)
+    public void Save(BinaryWriter data)
     {
         data.Write(id);
         if (id != NoId)
@@ -169,7 +169,7 @@ public class InventorySlot : ItemSlot,
         }
     }
 
-    public void Load(ref BinaryReader data, int version)
+    public void Load(BinaryReader data, int version)
     {
         id = data.ReadUInt32();
         if (id != NoId)

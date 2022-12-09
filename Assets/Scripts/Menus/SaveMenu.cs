@@ -1,22 +1,32 @@
+using UnityEngine;
+
 public class SaveMenu : SaveLoadMenu
 {
-    public void Save(int id)
+    Idol idol;
+
+
+    public void Save(Transform button)
     {
-        ((SaveData)datas[id]).Save(id);
+        int id = button.GetSiblingIndex();
 
-        InitButton(buttons.GetChild(id), id);
+        SaveLoadManager.Save(id);
+        idol.isSaveable = false;
 
-        Back();
+        InitButton(button, id);
+
+        OpenUpgradeMenu();
+        PauseMenu.upgradeMenu.Open(idol);
     }
 
-    public void Back()
+
+    public void OpenUpgradeMenu()
     {
-        PauseMenu.SaveMenu();
+        Settings(gameObject, PauseMenu.upgradeMenu.gameObject);
     }
 
 
-    public override Data GetData(int i)
+    public void Open(Idol idol)
     {
-        return Manager.SaveSaveFile(i);
+        this.idol = idol;
     }
 }

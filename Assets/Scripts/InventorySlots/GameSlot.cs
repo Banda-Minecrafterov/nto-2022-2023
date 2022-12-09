@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameSlot : ItemSlot
 {
+    [SerializeField]
     public HandSlot slot;
 
     Image blockImage;

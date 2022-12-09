@@ -1,12 +1,20 @@
+using Cinemachine;
 using System.Collections;
 using System.IO;
 using UnityEngine;
 
 
+[RequireComponent(typeof(PlayerStamina))]
 [RequireComponent(typeof(PlayerMovement))]
 public class Player : Character, ISaveLoadData
 {
-    PlayerMovement movement;
+    public PlayerMovement movement { get; private set; }
+    public PlayerStamina  stamina  { get; private set; }
+
+    Coroutine attackCoroutine;
+
+    [SerializeField]
+    CinemachineVirtualCamera cameraFollow;
 
     public static Player player { get; private set; }
 
@@ -18,42 +26,73 @@ public class Player : Character, ISaveLoadData
         player = this;
 
         movement = GetComponent<PlayerMovement>();
+        stamina  = GetComponent<PlayerStamina>();
 
         base.Awake();
+
+#if DEBUG
+        SaveLoadManager.LoadFiles();
+#endif
     }
 
 
     void OnEnable()
     {
-        StartCoroutine(Attack());
+        movement.enabled = true;
+        if (currentAttack == null)
+        {
+            attackCoroutine = StartCoroutine(AttackCheck());
+        }
+    }
+
+    void OnDisable()
+    {
+        movement.enabled = false;
+        if (currentAttack == null)
+        {
+            StopCoroutine(attackCoroutine);
+        }
     }
 
 
-    IEnumerator Attack()
+    IEnumerator AttackCheck()
     {
         while (true)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 movement.enabled = false;
-                yield return StartCoroutine(attack[0].Attack());
-                movement.enabled = true;
+                StopCoroutine(attackCoroutine);
+
+                StartAttack(0);
             }
             yield return null;
         }
     }
 
 
-    public void Save(ref BinaryWriter data)
+    public override void StopAttack()
     {
-        Vector2 pos = transform.position;
+        movement.enabled = true;
+        attackCoroutine = StartCoroutine(AttackCheck());
+
+        base.StopAttack();
+    }
+
+
+    public void Save(BinaryWriter data)
+    {
+        Vector3 pos = transform.position;
         data.Write(pos.x);
         data.Write(pos.y);
     }
 
-    public void Load(ref BinaryReader data, int version)
+    public void Load(BinaryReader data, int version)
     {
-        transform.position = new Vector3(data.ReadSingle(), data.ReadSingle(), 0.0f);
+        Vector3 position = new Vector3(data.ReadSingle(), data.ReadSingle(), 0.0f);
+
+        transform.position = position;
+        cameraFollow.ForceCameraPosition(position + cameraFollow.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, Quaternion.identity);
     }
 }
 

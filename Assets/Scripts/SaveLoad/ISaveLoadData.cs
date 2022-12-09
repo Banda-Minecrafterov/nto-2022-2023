@@ -3,7 +3,7 @@ using System.IO;
 
 public interface ISaveLoadData
 {
-    public abstract void Save(ref BinaryWriter data);
+    public void Save(BinaryWriter data);
 
-    public abstract void Load(ref BinaryReader data, Int32 version);
+    public void Load(BinaryReader data, Int32 version);
 }

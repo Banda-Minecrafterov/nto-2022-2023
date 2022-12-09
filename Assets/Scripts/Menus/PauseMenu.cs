@@ -15,9 +15,11 @@ public class PauseMenu : BaseMenu
     GameObject inventoryMenu;
 
     [SerializeField]
-    GameObject saveMenu;
+    SaveMenu saveMenuLocal;
     [SerializeField]
-    GameObject upgradeMenu;
+    GameObject loadMenuLocal;
+    [SerializeField]
+    UpgradeMenu upgradeMenuLocal;
 
     [SerializeField]
     GameObject background;
@@ -26,7 +28,11 @@ public class PauseMenu : BaseMenu
     Transform buttons;
 
     static PauseMenu menu;
-    
+
+    public static SaveMenu    saveMenu    { get => menu.saveMenuLocal;  }
+    public static GameObject  loadMenu    { get => menu.loadMenuLocal; }
+    public static UpgradeMenu upgradeMenu { get => menu.upgradeMenuLocal; }
+
 
     void Awake()
     {
@@ -39,8 +45,6 @@ public class PauseMenu : BaseMenu
         beastsMenu.SetActive(false);
 
         background.SetActive(false);
-
-        saveMenu.SetActive(false);
 #endif
     }
 
@@ -55,8 +59,8 @@ public class PauseMenu : BaseMenu
                 {
                     if (!isPaused)
                     {
-                        background.SetActive(true);
                         Pause();
+                        background.SetActive(true);
                     }
 
                     BeastsMenu();
@@ -66,8 +70,8 @@ public class PauseMenu : BaseMenu
                 {
                     if (!isPaused)
                     {
-                        background.SetActive(true);
                         Pause();
+                        background.SetActive(true);
                     }
 
                     InventoryMenu();
@@ -77,12 +81,16 @@ public class PauseMenu : BaseMenu
                 {
                     if (isPaused)
                     {
-                        background.SetActive(false);
                         Pause();
+                        background.SetActive(false);
 
-                        menu.settingsMenu.SetActive(false);
-                        menu.beastsMenu.SetActive(false);
-                        menu.inventoryMenu.SetActive(false);
+                        settingsMenu.SetActive(false);
+                        beastsMenu.SetActive(false);
+                        inventoryMenu.SetActive(false);
+
+                        saveMenuLocal.gameObject.SetActive(false);
+                        loadMenuLocal.SetActive(false);
+                        upgradeMenuLocal.gameObject.SetActive(false);
 
                         TipManager.TooltipDisable();
                     }
@@ -99,7 +107,7 @@ public class PauseMenu : BaseMenu
         isPaused = false;
         Time.timeScale = 1;
 
-        Manager.LoadScene("Menu");
+        LoadSceneManager.LoadScene("Menu");
     }
 
 
@@ -131,16 +139,21 @@ public class PauseMenu : BaseMenu
     }
 
 
-    public static void SaveMenu()
+    public static void LoadMenu()
     {
-        menu.Pause();
-        menu.saveMenu.SetActive(isPaused);
+        OpenMenu(loadMenu);
     }
 
-    public static void UpgradeMenu()
+    public static void UpgradeMenu(Idol idol)
     {
-        menu.Pause();
-        menu.upgradeMenu.SetActive(isPaused);
+        OpenMenu(upgradeMenu.gameObject);
+        upgradeMenu.Open(idol);
+    }
+
+    static void OpenMenu(GameObject menu)
+    {
+        PauseMenu.menu.Pause();
+        menu.SetActive(isPaused);
     }
 
 

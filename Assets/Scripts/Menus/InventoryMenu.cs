@@ -1,6 +1,6 @@
 public class InventoryMenu : BaseMenu
 {
-    void Awake()
+    void Start()
     {
         gameObject.SetActive(false);
     }

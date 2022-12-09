@@ -21,7 +21,6 @@ public class UpgradeData : ScriptableObject
     public void Save(ref BinaryWriter data, UpgradeData current)
     {
         int i = 0;
-        Debug.Log(buff.id + " = " + current.buff.id);
         for (UpgradeData dataIt = this; dataIt != current; i++)
         {
             dataIt = dataIt.next;

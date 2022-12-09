@@ -7,7 +7,7 @@ using UnityEngine.TextCore.Text;
 public abstract class CharacterHealth : MonoBehaviour
 {
     [SerializeField]
-    protected HealthBar healthBar;
+    protected Bar healthBar;
 
     protected Character character { get; private set; }
 
@@ -28,7 +28,7 @@ public abstract class CharacterHealth : MonoBehaviour
 
     protected void Init()
     {
-        healthBar.MaxHealthPoint(character.maxHealth);
+        healthBar.SetMax(character.maxHealth);
     }
 
 
@@ -38,11 +38,11 @@ public abstract class CharacterHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            healthBar.HealthPoint(0);
+            healthBar.SetValue(0);
             return true;
         }
 
-        healthBar.HealthPoint(currentHealth);
+        healthBar.SetValue(currentHealth);
         return false;
     }
 
@@ -56,7 +56,7 @@ public abstract class CharacterHealth : MonoBehaviour
         if (currentHealth > character.maxHealth)
             currentHealth = heal;
 
-        healthBar.HealthPoint(currentHealth);
+        healthBar.SetValue(currentHealth);
         return true;
     }
 }
