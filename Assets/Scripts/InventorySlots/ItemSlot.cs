@@ -1,16 +1,19 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour
+public class ItemSlot : Graphic
 {
     protected GameObject countText;
     protected Transform itemTransform;
 
 
-    protected void Awake()
+    protected override void Awake()
     {
         countText = transform.Find("Count").gameObject;
+
+        base.Awake();
 
 #if DEBUG
         countText.SetActive(false);

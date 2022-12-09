@@ -96,8 +96,8 @@ public class UpgradeMenu : BaseMenu
                     ToString();
                 break;
 
-            case UpgradeData.Type.Stamina:
-                break;
+            //case UpgradeData.Type.Stamina:
+            //    break;
         }
     }
 

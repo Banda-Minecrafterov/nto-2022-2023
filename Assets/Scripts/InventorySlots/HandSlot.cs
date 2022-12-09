@@ -3,11 +3,10 @@ using UnityEngine.EventSystems;
 
 public class HandSlot : InventorySlot
 {
-    [SerializeField]
     GameSlot gameSlot;
 
 
-    void Start()
+    protected override void Start()
     {
         gameSlot = InventoryManager.GetGameSlot(transform.GetSiblingIndex()).GetComponent<GameSlot>();
         gameSlot.slot = this;

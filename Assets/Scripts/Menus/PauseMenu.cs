@@ -22,9 +22,9 @@ public class PauseMenu : BaseMenu
     UpgradeMenu upgradeMenuLocal;
 
     [SerializeField]
-    GameObject background;
+    GameObject foreground;
 
-    [SerializeField]
+    [SerializeField] 
     Transform buttons;
 
     static PauseMenu menu;
@@ -42,9 +42,9 @@ public class PauseMenu : BaseMenu
 
 #if DEBUG
         settingsMenu.SetActive(false);
-        beastsMenu.SetActive(false);
+        //beastsMenu.SetActive(false);
 
-        background.SetActive(false);
+        foreground.SetActive(false);
 #endif
     }
 
@@ -60,7 +60,7 @@ public class PauseMenu : BaseMenu
                     if (!isPaused)
                     {
                         Pause();
-                        background.SetActive(true);
+                        foreground.SetActive(true);
                     }
 
                     BeastsMenu();
@@ -71,7 +71,7 @@ public class PauseMenu : BaseMenu
                     if (!isPaused)
                     {
                         Pause();
-                        background.SetActive(true);
+                        foreground.SetActive(true);
                     }
 
                     InventoryMenu();
@@ -82,7 +82,7 @@ public class PauseMenu : BaseMenu
                     if (isPaused)
                     {
                         Pause();
-                        background.SetActive(false);
+                        foreground.SetActive(false);
 
                         settingsMenu.SetActive(false);
                         beastsMenu.SetActive(false);

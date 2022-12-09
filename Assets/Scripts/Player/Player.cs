@@ -64,19 +64,19 @@ public class Player : Character, ISaveLoadData
                 movement.enabled = false;
                 StopCoroutine(attackCoroutine);
 
-                StartAttack(0);
+                StartAttackAnimation(0);
             }
             yield return null;
         }
     }
 
 
-    public override void StopAttack()
+    public override void StopAttackAnimation()
     {
         movement.enabled = true;
         attackCoroutine = StartCoroutine(AttackCheck());
 
-        base.StopAttack();
+        base.StopAttackAnimation();
     }
 
 

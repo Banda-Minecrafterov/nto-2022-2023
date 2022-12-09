@@ -37,11 +37,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190801601707165824, guid: 40966a4b2a4132b428af66782f38e450, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 190801601707165824, guid: 40966a4b2a4132b428af66782f38e450, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 180
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 190801601707165824, guid: 40966a4b2a4132b428af66782f38e450, type: 3}
       propertyPath: m_LocalPosition.x
@@ -73,11 +73,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190801601707165824, guid: 40966a4b2a4132b428af66782f38e450, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 90
+      value: 15.5
       objectReference: {fileID: 0}
     - target: {fileID: 190801601707165824, guid: 40966a4b2a4132b428af66782f38e450, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -90
+      value: -15.5
       objectReference: {fileID: 0}
     - target: {fileID: 190801601707165824, guid: 40966a4b2a4132b428af66782f38e450, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -115,3 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431f8495c7682674586002bf38e30387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  gameSlot: {fileID: 0}

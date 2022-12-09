@@ -163,19 +163,24 @@ public class Character : MonoBehaviour
     }
 
 
-    protected virtual void StartAttack(int attackId)
+    protected virtual void StartAttackAnimation(int attackId)
     {
         currentAttack = attack[attackId];
-        currentAttack.StartAttack();
+        currentAttack.StartAnimation();
     }
 
-    public virtual void Attack()
+    public virtual void StartAttack()
     {
-        currentAttack.Attack();
+        currentAttack.StartAttack();
     }
 
     public virtual void StopAttack()
     {
         currentAttack.StopAttack();
+    }
+
+    public virtual void StopAttackAnimation()
+    {
+        currentAttack.StopAnimation();
     }
 }

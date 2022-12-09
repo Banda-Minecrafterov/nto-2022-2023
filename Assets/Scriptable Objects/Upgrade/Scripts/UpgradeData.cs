@@ -7,7 +7,7 @@ public class UpgradeData : ScriptableObject
 {
     public enum Type
     {
-        Attack = 0, Health, Stamina,
+        Attack = 0, Health, //Stamina,
 
         Count
     }

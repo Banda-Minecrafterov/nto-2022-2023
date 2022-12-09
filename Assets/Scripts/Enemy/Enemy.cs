@@ -20,16 +20,16 @@ public class Enemy : Character, ISaveLoadData
     }
 
 
-    public void StartAttack()
+    public void StartAttackAnimation()
     {
         path.enabled = false;
-        base.StartAttack(0);
+        base.StartAttackAnimation(0);
     }
 
-    public override void StopAttack()
+    public override void StopAttackAnimation()
     {
         path.enabled = true;
-        base.StopAttack();
+        base.StopAttackAnimation();
     }
 
 

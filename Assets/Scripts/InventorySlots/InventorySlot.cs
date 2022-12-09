@@ -1,11 +1,8 @@
 using System;
-using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.IO;
 
 
-[RequireComponent(typeof(Graphic))]
 public class InventorySlot : ItemSlot,
     IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
     IPointerEnterHandler, IPointerMoveHandler, IPointerExitHandler,

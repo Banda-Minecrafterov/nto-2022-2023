@@ -37,12 +37,12 @@ public abstract class CharacterAttack : MonoBehaviour
     }
 
 
-    public virtual void StartAttack()
+    public virtual void StartAnimation()
     {
         character.animator.SetBool(attackName, true);
     }
 
-    public virtual void Attack()
+    public virtual void StartAttack()
     {
         collider.enabled = true;
     }
@@ -50,6 +50,10 @@ public abstract class CharacterAttack : MonoBehaviour
     public virtual void StopAttack()
     {
         collider.enabled = false;
+    }
+
+    public virtual void StopAnimation()
+    {
         character.animator.SetBool(attackName, false);
     }
 

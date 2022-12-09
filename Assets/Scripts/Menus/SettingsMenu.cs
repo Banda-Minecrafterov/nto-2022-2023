@@ -21,7 +21,7 @@ public class SettingsMenu : BaseMenu
         resolutionDropdown.options.Clear();
 #endif
 
-        resolutions = Screen.resolutions.Reverse().ToArray();
+        resolutions = Screen.resolutions.Where(resolution => resolution.width * 9 == resolution.height * 16).Reverse().ToArray();
         foreach (var i in resolutions)
         {
             resolutionDropdown.options.Add(new TMP_Dropdown.OptionData(i.width + "x" + i.height + " " + i.refreshRate + "Hz"));

@@ -18,22 +18,6 @@ public class EnemyAttack : CharacterAttack
     }
 
 
-    public override void StartAttack()
-    {
-        base.StartAttack();
-    }
-
-    public override void Attack()
-    {
-        base.Attack();
-    }
-
-    public override void StopAttack()
-    {
-        base.StopAttack();
-    }
-
-
     public static void DisableAttacks()
     {
         foreach (var i in everyAttack)

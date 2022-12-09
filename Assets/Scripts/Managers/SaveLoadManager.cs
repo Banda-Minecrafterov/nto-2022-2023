@@ -9,7 +9,7 @@ public class SaveLoadManager
 
     public enum SaveObjectId
     {
-        InvSlot0 = 0, InvSlot26 = InvSlot0 + 26,
+        InvSlot0 = 0, InvSlot13 = InvSlot0 + 13,
         HandSlot0, HandSlot3 = HandSlot0 + 3,
 
         Interctable0, Interctable2 = Interctable0 + 2,

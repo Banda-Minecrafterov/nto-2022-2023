@@ -19,6 +19,9 @@ public class PlayerStamina : MonoBehaviour
     void Awake()
     {
         currentStamina = maxStamina;
+    }
+    void Start()
+    {
         stamina.SetMax(maxStamina);
     }
 

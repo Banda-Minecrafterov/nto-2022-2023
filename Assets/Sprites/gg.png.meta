@@ -2645,7 +2645,7 @@ TextureImporter:
         width: 38
         height: 50
       alignment: 9
-      pivot: {x: 0.39473686, y: 0.12}
+      pivot: {x: 0.42105263, y: 0.12}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3123,8 +3123,155 @@ TextureImporter:
       name: gg 1_146
       rect:
         serializedVersion: 2
-        x: 861
+        x: 862
         y: 376
+        width: 31
+        height: 51
+      alignment: 9
+      pivot: {x: 0.22580644, y: 0.11764706}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edd68fa70e3bf4c449eca595ecee9625
+      internalID: 1034340988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg 1_147
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 322
+        width: 41
+        height: 53
+      alignment: 9
+      pivot: {x: 0.31707317, y: 0.13207547}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7e029dcd23552d499d3a9e5e9673cb0
+      internalID: 378089033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg 1_148
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 322
+        width: 41
+        height: 53
+      alignment: 9
+      pivot: {x: 0.31707317, y: 0.13207547}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba81897dd88bda143a49074febd43c06
+      internalID: -898016005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg 1_149
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 322
+        width: 41
+        height: 51
+      alignment: 9
+      pivot: {x: 0.31707317, y: 0.13725491}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42980afd3499bff4e827a29e94d5aa01
+      internalID: -830109272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg 1_150
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 322
+        width: 41
+        height: 51
+      alignment: 9
+      pivot: {x: 0.31707317, y: 0.13725491}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 048b437417b0fd14883bc33722dda9da
+      internalID: 882393171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg 1_151
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 322
+        width: 32
+        height: 50
+      alignment: 9
+      pivot: {x: 0.3125, y: 0.12}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c02c4d16bde3abd4cbe80d8b06e60f84
+      internalID: 370265755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg 1_152
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 322
+        width: 32
+        height: 50
+      alignment: 9
+      pivot: {x: 0.3125, y: 0.12}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb7ae6bff0179345b924190548a30e7
+      internalID: -165074769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg 1_153
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 322
         width: 32
         height: 51
       alignment: 9
@@ -3134,8 +3281,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edd68fa70e3bf4c449eca595ecee9625
-      internalID: 1034340988
+      spriteID: 30225baccd3f01d44b34dd006a4afc8c
+      internalID: 1517322665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg 1_154
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 322
+        width: 32
+        height: 51
+      alignment: 9
+      pivot: {x: 0.25, y: 0.11764706}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8fd53c05e671a94193ad2fb779a2f2e
+      internalID: 766994080
       vertices: []
       indices: 
       edges: []
@@ -3170,6 +3338,7 @@ TextureImporter:
       gg 1_52: -982161935
       gg 1_76: 941936628
       gg 1_83: -1230454280
+      gg 1_152: -165074769
       gg 1_133: 1138404103
       gg 1_14: 653315205
       gg 1_16: -1154311392
@@ -3177,6 +3346,7 @@ TextureImporter:
       gg 1_73: 298330082
       gg 1_98: 257183710
       gg 1_111: -1024056115
+      gg 1_148: -898016005
       gg 1_126: -1238410874
       gg 1_67: -1901766797
       gg 1_19: -1977710592
@@ -3186,6 +3356,7 @@ TextureImporter:
       gg 1_75: 1944755181
       gg 1_146: 1034340988
       gg 1_101: 488993688
+      gg 1_149: -830109272
       gg 1_1: -1644775402
       gg 1_141: -1672839853
       gg 1_3: 603441794
@@ -3197,6 +3368,7 @@ TextureImporter:
       gg 1_41: -1124887527
       gg 1_132: -929473537
       gg 1_135: 1994548978
+      gg 1_147: 378089033
       gg 1_5: -354248412
       gg 1_22: 1420647848
       gg 1_65: 1123018456
@@ -3221,12 +3393,12 @@ TextureImporter:
       gg 1_48: -554886400
       gg 1_94: 914913874
       gg 1_88: 1620899193
-      gg 1_42: 1940420883
-      gg 1_51: 1887088791
-      gg 1_37: 1237937740
       gg 1_57: 1603675824
-      gg 1_119: -356403826
+      gg 1_42: 1940420883
       gg 1_128: -977246954
+      gg 1_37: 1237937740
+      gg 1_119: -356403826
+      gg 1_51: 1887088791
       gg 1_63: 2040569252
       gg 1_118: 426775677
       gg 1_33: 1227828846
@@ -3241,6 +3413,7 @@ TextureImporter:
       gg 1_62: 781909907
       gg 1_99: -1243799657
       gg 1_136: 1517115185
+      gg 1_150: 882393171
       gg 1_26: -1185643391
       gg 1_25: -345811835
       gg 1_79: 352115079
@@ -3255,6 +3428,7 @@ TextureImporter:
       gg 1_116: 980741054
       gg 1_144: 1342742713
       gg 1_123: 1602120203
+      gg 1_154: 766994080
       gg 1_80: 1262202089
       gg 1_107: -1498955527
       gg 1_30: 966785737
@@ -3283,9 +3457,11 @@ TextureImporter:
       gg 1_127: 358273651
       gg 1_12: 1753542945
       gg 1_2: 1041874197
+      gg 1_153: 1517322665
       gg 1_87: 1098971994
       gg 1_69: 504408806
       gg 1_106: 588556296
+      gg 1_151: 370265755
       gg 1_58: -1143204851
       gg 1_89: 1546730874
       gg 1_38: 442707864
