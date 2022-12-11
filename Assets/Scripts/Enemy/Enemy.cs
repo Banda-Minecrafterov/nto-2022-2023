@@ -7,14 +7,19 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyMovement))]
 public class Enemy : Character, ISaveLoadData
 {
-    EnemyMovement path;
+    EnemyMovement movement;
+
+    [SerializeField]
+    int sunEnergyLocal;
+
+    public int sunEnergy { get => sunEnergyLocal; }
 
 
     new void Awake()
     {
         SaveLoadManager.AddObject(SaveLoadManager.SaveObjectId.Enemy0 + transform.GetSiblingIndex(), this);
 
-        path = GetComponent<EnemyMovement>();
+        movement = GetComponent<EnemyMovement>();
 
         base.Awake();
     }
@@ -22,14 +27,14 @@ public class Enemy : Character, ISaveLoadData
 
     public void StartAttackAnimation()
     {
-        path.enabled = false;
         base.StartAttackAnimation(0);
+        movement.enabled = false;
     }
 
     public override void StopAttackAnimation()
     {
-        path.enabled = true;
         base.StopAttackAnimation();
+        movement.enabled = true;
     }
 
 

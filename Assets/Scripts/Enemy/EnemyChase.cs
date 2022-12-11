@@ -49,20 +49,6 @@ public class EnemyChase : MonoBehaviour
             movement.enabled = true;
         }
     }
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            if (movement.desiredVelocity.x > 0)
-            {
-                sprite.flipX = true;
-            }
-            else if (movement.desiredVelocity.x < 0)
-            {
-                sprite.flipX = false;
-            }
-        }
-    }
 
     void OnTriggerExit2D(Collider2D collision)
     {

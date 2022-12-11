@@ -10,21 +10,23 @@ public class PauseMenu : BaseMenu
     [SerializeField]
     GameObject settingsMenu;
     [SerializeField]
+    GameObject keysMenu;
+    [SerializeField]
     GameObject beastsMenu;
     [SerializeField]
     GameObject inventoryMenu;
 
     [SerializeField]
-    SaveMenu saveMenuLocal;
+    SaveMenu    saveMenuLocal;
     [SerializeField]
-    GameObject loadMenuLocal;
+    GameObject  loadMenuLocal;
     [SerializeField]
     UpgradeMenu upgradeMenuLocal;
 
     [SerializeField]
     GameObject foreground;
 
-    [SerializeField] 
+    [SerializeField]
     Transform buttons;
 
     static PauseMenu menu;
@@ -40,9 +42,17 @@ public class PauseMenu : BaseMenu
 
         StartCoroutine(UpdateMenu());
 
+        beastsMenu.SetActive(true);
+        inventoryMenu.SetActive(true);
+
+        upgradeMenu.gameObject.SetActive(true);
+
 #if DEBUG
         settingsMenu.SetActive(false);
-        //beastsMenu.SetActive(false);
+        keysMenu.SetActive(false);
+
+        saveMenu.gameObject.SetActive(false);
+        loadMenu.SetActive(false);
 
         foreground.SetActive(false);
 #endif
@@ -85,6 +95,7 @@ public class PauseMenu : BaseMenu
                         foreground.SetActive(false);
 
                         settingsMenu.SetActive(false);
+                        keysMenu.SetActive(false);
                         beastsMenu.SetActive(false);
                         inventoryMenu.SetActive(false);
 
@@ -116,8 +127,11 @@ public class PauseMenu : BaseMenu
         buttons.GetChild(0).gameObject.GetComponent<Button>().Select();
 
         settingsMenu.SetActive(true);
+        keysMenu.SetActive(false);
         beastsMenu.SetActive(false);
         inventoryMenu.SetActive(false);
+
+        AudioManager.uiOpen.Play();
     }
 
     public void BeastsMenu()
@@ -125,8 +139,11 @@ public class PauseMenu : BaseMenu
         buttons.GetChild(1).gameObject.GetComponent<Button>().Select();
 
         settingsMenu.SetActive(false);
+        keysMenu.SetActive(false);
         beastsMenu.SetActive(true);
         inventoryMenu.SetActive(false);
+
+        AudioManager.uiOpen.Play();
     }
 
     public void InventoryMenu()
@@ -134,26 +151,41 @@ public class PauseMenu : BaseMenu
         buttons.GetChild(2).gameObject.GetComponent<Button>().Select();
 
         settingsMenu.SetActive(false);
+        keysMenu.SetActive(false);
         beastsMenu.SetActive(false);
         inventoryMenu.SetActive(true);
+
+        AudioManager.uiOpen.Play();
     }
 
+
+    public static void OpenSaveMenu(Idol idol)
+    {
+        OpenMenu(saveMenu.gameObject);
+        saveMenu.Open(idol);
+    }
+
+    public static void CloseSaveMenu()
+    {
+        OpenMenu(saveMenu.gameObject);
+    }
 
     public static void LoadMenu()
     {
         OpenMenu(loadMenu);
     }
 
-    public static void UpgradeMenu(Idol idol)
+    public static void UpgradeMenu()
     {
         OpenMenu(upgradeMenu.gameObject);
-        upgradeMenu.Open(idol);
     }
 
     static void OpenMenu(GameObject menu)
     {
         PauseMenu.menu.Pause();
         menu.SetActive(isPaused);
+
+        AudioManager.uiOpen.Play();
     }
 
 

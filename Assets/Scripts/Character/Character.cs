@@ -3,7 +3,6 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(CharacterHealth))]
-[RequireComponent(typeof(Animator))]
 public class Character : MonoBehaviour
 {
     CharacterHealth health;
@@ -83,6 +82,13 @@ public class Character : MonoBehaviour
             return GetMaxHealth(1.0f, stats.maxHealthPercantage, 0.0f, stats.maxHealthPlus);
         }
     }
+    public float maxStamina
+    {
+        get
+        {
+            return GetMaxStamina(1.0f, stats.maxStaminaPercantage, 0.0f, stats.maxStaminaPlus);
+        }
+    }
 
     public Animator animator { get; private set; }
 
@@ -90,7 +96,7 @@ public class Character : MonoBehaviour
     protected void Awake()
     {
         health   = GetComponent<CharacterHealth>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
 
@@ -134,6 +140,9 @@ public class Character : MonoBehaviour
 
         stats.maxHealthPercantage *= buff.maxHealthPercantage;
         stats.maxHealthPlus       += buff.maxHealthPlus;
+
+        stats.maxStaminaPercantage *= buff.maxStaminaPercantage;
+        stats.maxStaminaPlus       += buff.maxStaminaPlus;
     }
 
     void RemoveBuff(CharacterBuff buff)
@@ -143,6 +152,9 @@ public class Character : MonoBehaviour
 
         stats.maxHealthPercantage /= buff.maxHealthPercantage;
         stats.maxHealthPlus       -= buff.maxHealthPlus;
+
+        stats.maxStaminaPercantage /= buff.maxStaminaPercantage;
+        stats.maxStaminaPlus       -= buff.maxStaminaPlus;
     }
 
 
@@ -160,6 +172,10 @@ public class Character : MonoBehaviour
     public static float GetMaxHealth(float maxHealthPercantage, float origMaxHealthPercantage, float maxHealthPlus, float origMaxHealthPlus)
     {
         return maxHealthPercantage * origMaxHealthPercantage * (maxHealthPlus + origMaxHealthPlus);
+    }
+    public static float GetMaxStamina(float maxStaminaPercantage, float origMaxStaminaPercantage, float maxStaminaPlus, float origMaxStaminaPlus)
+    {
+        return maxStaminaPercantage * origMaxStaminaPercantage * (maxStaminaPlus + origMaxStaminaPlus);
     }
 
 
@@ -182,5 +198,6 @@ public class Character : MonoBehaviour
     public virtual void StopAttackAnimation()
     {
         currentAttack.StopAnimation();
+        currentAttack = null;
     }
 }

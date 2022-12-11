@@ -15,11 +15,11 @@ public abstract class SaveLoadMenu : BaseMenu
             switch (SaveLoadManager.saveLoadDatas[i].version)
             {
                 case SaveLoadData.FileNotFound:
-                    button.Find("Ver").gameObject.SetActive(false);
+                    //button.Find("Ver").gameObject.SetActive(false);
                     break;
 
                 case SaveLoadData.ErrorOcured:
-                    button.Find("Text").GetComponent<TextMeshProUGUI>().text = "Error";
+                    //button.Find("Text").GetComponent<TextMeshProUGUI>().text = "Error";
                     goto case SaveLoadData.FileNotFound;
 
                 default:
@@ -31,11 +31,11 @@ public abstract class SaveLoadMenu : BaseMenu
 
     public void InitButton(Transform button, int id)
     {
-        button.Find("Text").gameObject.SetActive(false);
+        //button.Find("Text").gameObject.SetActive(false);
 
-        var Ver = button.Find("Ver");
-        Ver.gameObject.SetActive(true);
-        Ver.GetComponent<TextMeshProUGUI>().text = "Ver: " + SaveLoadManager.saveLoadDatas[id].version;
+        //var Ver = button.Find("Ver");
+        //Ver.gameObject.SetActive(true);
+        //Ver.GetComponent<TextMeshProUGUI>().text = "Ver: " + SaveLoadManager.saveLoadDatas[id].version;
     }
 
 

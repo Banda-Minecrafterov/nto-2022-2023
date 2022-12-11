@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class Bar : MonoBehaviour
 {
-    protected Slider slider;
+    protected Slider slider { get; private set; }
 
 
     protected void Awake()

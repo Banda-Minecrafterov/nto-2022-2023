@@ -18,5 +18,5 @@ MonoBehaviour:
     attackPercentage: 1
     attackPlus: 0
     maxHealthPercantage: 1
-    maxHealthPlus: 10
+    maxHealthPlus: 20
   next: {fileID: 11400000, guid: 6ae04eae9043087468c287ca27e84c87, type: 2}

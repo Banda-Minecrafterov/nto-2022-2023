@@ -1,44 +1,35 @@
 using System.Collections;
+using System.IO;
 using UnityEngine;
 
 public class OpenWhenInteracted : SaveableInteractable
 {
-    [SerializeField]
-    SpriteRenderer open;
-
-    [SerializeField]
-    float speed;
-
-
     protected override void Interact()
     {
         StopButtonCheck();
+    }
 
-        StartCoroutine(Open());
+    public new void StopInteracting()
+    {
+        gameObject.SetActive(false);
     }
 
 
-    IEnumerator Open()
+    public override void Load(BinaryReader data, int version)
     {
-        while (true)
-        {
-            Color color = open.color;
-            color.a -= Time.deltaTime * speed;
-            open.color = color;
+        LoadProtected(data, version);
+    }
 
-            yield return null;
+    public override void Save(BinaryWriter data)
+    {
+        data.Write(gameObject.activeSelf);
+    }
 
-            if (color.a <= 0)
-                break;
-        }
-        open.gameObject.SetActive(false);
 
-        GetComponent<Collider2D>().enabled = false;
-        foreach (var i in GetComponentsInChildren<Collider2D>())
-        {
-            i.enabled = false;
-        }
-
-        enabled = false;
+    protected bool LoadProtected(BinaryReader data, int version)
+    {
+        bool active = data.ReadBoolean();
+        gameObject.SetActive(active);
+        return active;
     }
 }

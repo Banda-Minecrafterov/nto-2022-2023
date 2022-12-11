@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class SaveableInteractable : Interactable, ISaveLoadData
 {
-    new void Awake()
+    protected new void Awake()
     {
         SaveLoadManager.AddObject(SaveLoadManager.SaveObjectId.Interctable0 + transform.GetSiblingIndex(), this);
 

@@ -31,9 +31,13 @@ public class LoadSceneManager : MonoBehaviour
                 async.allowSceneActivation = true;
             yield return null;
         }
+        yield return null;
 
         if (scene == "Game")
+        {
             SaveLoadManager.Load(id);
+        }
+        AudioManager.SetAudioVolume();
 
         Destroy(gameObject);
 

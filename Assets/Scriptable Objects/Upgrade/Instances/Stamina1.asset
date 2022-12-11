@@ -19,4 +19,6 @@ MonoBehaviour:
     attackPlus: 0
     maxHealthPercantage: 1
     maxHealthPlus: 0
+    maxStaminaPercantage: 1
+    maxStaminaPlus: 20
   next: {fileID: 11400000, guid: 0ef88df91fd05484988eb0c2900602e5, type: 2}

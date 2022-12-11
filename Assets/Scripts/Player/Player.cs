@@ -4,17 +4,20 @@ using System.IO;
 using UnityEngine;
 
 
-[RequireComponent(typeof(PlayerStamina))]
+[RequireComponent(typeof(CharacterStamina))]
 [RequireComponent(typeof(PlayerMovement))]
 public class Player : Character, ISaveLoadData
 {
     public PlayerMovement movement { get; private set; }
-    public PlayerStamina  stamina  { get; private set; }
+    public CharacterStamina stamina  { get; private set; }
 
     Coroutine attackCoroutine;
 
     [SerializeField]
-    CinemachineVirtualCamera cameraFollow;
+    CinemachineVirtualCamera cameraFollowLocal;
+
+    public static bool isAtackable { get; private set; } = true;
+    public static CinemachineVirtualCamera cameraFollow { get => player.cameraFollowLocal; }
 
     public static Player player { get; private set; }
 
@@ -26,7 +29,7 @@ public class Player : Character, ISaveLoadData
         player = this;
 
         movement = GetComponent<PlayerMovement>();
-        stamina  = GetComponent<PlayerStamina>();
+        stamina  = GetComponent<CharacterStamina>();
 
         base.Awake();
 
@@ -38,6 +41,8 @@ public class Player : Character, ISaveLoadData
 
     void OnEnable()
     {
+        isAtackable = true;
+
         movement.enabled = true;
         if (currentAttack == null)
         {
@@ -47,6 +52,8 @@ public class Player : Character, ISaveLoadData
 
     void OnDisable()
     {
+        isAtackable = false;
+
         movement.enabled = false;
         if (currentAttack == null)
         {
@@ -80,6 +87,12 @@ public class Player : Character, ISaveLoadData
     }
 
 
+    public void Dead()
+    {
+        PauseMenu.LoadMenu();
+    }
+
+
     public void Save(BinaryWriter data)
     {
         Vector3 pos = transform.position;
@@ -92,7 +105,7 @@ public class Player : Character, ISaveLoadData
         Vector3 position = new Vector3(data.ReadSingle(), data.ReadSingle(), 0.0f);
 
         transform.position = position;
-        cameraFollow.ForceCameraPosition(position + cameraFollow.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, Quaternion.identity);
+        cameraFollowLocal.ForceCameraPosition(position + cameraFollow.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset, Quaternion.identity);
     }
 }
 

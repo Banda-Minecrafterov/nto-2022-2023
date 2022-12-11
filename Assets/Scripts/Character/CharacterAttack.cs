@@ -1,12 +1,19 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(AudioSource))]
 public abstract class CharacterAttack : MonoBehaviour
 {
-    Character character;
+    public static List<AudioSource> audioSources { get; private set; } = new List<AudioSource>();
+
+    protected Character character;
 
     new Collider2D collider;
+
+    [SerializeField]
+    AudioSource source;
 
     [SerializeField]
     string attackName;
@@ -17,10 +24,12 @@ public abstract class CharacterAttack : MonoBehaviour
     float damage;
 
 
-    void Awake()
+    protected void Awake()
     {
-        collider  = GetComponent<Collider2D>();
         character = GetComponentInParent<Character>();
+        collider  = GetComponent<Collider2D>();
+
+        audioSources.Add(source);
 
 #if DEBUG
         collider.enabled = false;
@@ -32,6 +41,7 @@ public abstract class CharacterAttack : MonoBehaviour
     {
         if (IsAttackable(collision))
         {
+            source.Play();
             collision.GetComponent<Character>().TakeDamage(character.GetAttack(damagePercentage, damage));
         }
     }

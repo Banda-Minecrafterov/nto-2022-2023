@@ -6,10 +6,12 @@ public class HandSlot : InventorySlot
     GameSlot gameSlot;
 
 
-    protected override void Start()
+    new protected void Awake()
     {
         gameSlot = InventoryManager.GetGameSlot(transform.GetSiblingIndex()).GetComponent<GameSlot>();
         gameSlot.slot = this;
+
+        base.Awake();
     }
 
 

@@ -14,14 +14,7 @@ public class SaveMenu : SaveLoadMenu
 
         InitButton(button, id);
 
-        OpenUpgradeMenu();
-        PauseMenu.upgradeMenu.Open(idol);
-    }
-
-
-    public void OpenUpgradeMenu()
-    {
-        Settings(gameObject, PauseMenu.upgradeMenu.gameObject);
+        PauseMenu.CloseSaveMenu();
     }
 
 

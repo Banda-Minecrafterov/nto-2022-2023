@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using System.IO;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class UpgradeData : ScriptableObject
 {
     public enum Type
     {
-        Attack = 0, Health, //Stamina,
+        Attack = 0, Health, Stamina,
 
         Count
     }
@@ -16,6 +17,8 @@ public class UpgradeData : ScriptableObject
     public CharacterBuff buff;
 
     public UpgradeData next;
+
+    public Sprite sprite;
 
 
     public void Save(ref BinaryWriter data, UpgradeData current)

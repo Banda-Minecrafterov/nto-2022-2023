@@ -25,8 +25,9 @@ public class PlayerHealth : CharacterHealth, ISaveLoadData
 
         if (isDead)
         {
+            Debug.Log(character.animator.gameObject.name);
+            character.animator.SetBool("Die", true);
             character.enabled = false;
-            PauseMenu.LoadMenu();
         }
         return isDead;
     }

@@ -1,15 +1,15 @@
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.TextCore.Text;
 
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Character))]
+[RequireComponent(typeof(Player))]
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
-
-    new Collider2D collider;
 
     float horizontal;
     float vertical;
@@ -19,19 +19,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float speed = 80.0f;
     [SerializeField]
-    float dashSpeed = 80.0f;
-    [SerializeField]
-    float dashTime = 80.0f;
+    float dashSpeed = 1.0f;
 
     Vector2 lastChangedMovement = Vector2.zero;
 
     Player character;
 
+    Coroutine dash;
+
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();
 
         character = GetComponent<Player>();
     }
@@ -48,24 +47,24 @@ public class PlayerMovement : MonoBehaviour
                 var state = character.animator.GetCurrentAnimatorStateInfo(0);
                 if (state.IsName("Up_idle"))
                 {
-                    StartCoroutine(Dash(new Vector2(0.0f, 1.0f)));
+                    dash = StartCoroutine(StartDash(new Vector2(0.0f, 1.0f)));
                 }
                 else if (state.IsName("Down_idle"))
                 {
-                    StartCoroutine(Dash(new Vector2(0.0f, -1.0f)));
+                    dash = StartCoroutine(StartDash(new Vector2(0.0f, -1.0f)));
                 }
                 else if (state.IsName("Left_idle"))
                 {
-                    StartCoroutine(Dash(new Vector2(-1.0f, 0.0f)));
+                    dash = StartCoroutine(StartDash(new Vector2(-1.0f, 0.0f)));
                 }
                 else if (state.IsName("Right_idle"))
                 {
-                    StartCoroutine(Dash(new Vector2(1.0f, 0.0f)));
+                    dash = StartCoroutine(StartDash(new Vector2(1.0f, 0.0f)));
                 }
             }
             else
             {
-                StartCoroutine(Dash(new Vector2(horizontal, vertical)));
+                dash = StartCoroutine(StartDash(new Vector2(horizontal, vertical)));
             }
         }
     }
@@ -82,6 +81,15 @@ public class PlayerMovement : MonoBehaviour
             lastChangedMovement = move;
 
             move *= speed;
+
+            if (move.x == 0.0f && move.y == 0.0f)
+            {
+                AudioManager.playerSnowWalk.mute = true;
+            }
+            else
+            {
+                AudioManager.playerSnowWalk.mute = false;
+            }
         }
         else
         {
@@ -109,6 +117,8 @@ public class PlayerMovement : MonoBehaviour
             lastChangedMovement = move;
 
             move = move.normalized * diagonallSpeed;
+
+            AudioManager.playerSnowWalk.mute = false;
         }
 
         rb.velocity = move;
@@ -117,41 +127,51 @@ public class PlayerMovement : MonoBehaviour
     void OnDisable()
     {
         horizontal = 0.0f;
-        vertical = 0.0f;
+        vertical   = 0.0f;
 
         rb.velocity = Vector2.zero;
+
+        AudioManager.playerSnowWalk.mute = true;
     }
 
 
-    IEnumerator Dash(Vector2 direction)
+    IEnumerator StartDash(Vector2 direction)
     {
         if (character.stamina.DecreaseStamina(20.0f))
         {
+            character.animator.SetFloat("Speed X", direction.x);
+            character.animator.SetFloat("Speed Y", direction.y);
+
+            yield return null;
+
             if (direction.x == 0.0f || direction.y == 0.0f)
             {
                 direction *= dashSpeed;
             }
             else
             {
-                direction = direction.normalized * dashSpeed * diagonallSpeed / speed;
+                direction = direction.normalized * (dashSpeed * diagonallSpeed / speed);
             }
 
+            AudioManager.playerDash.enabled = true;
             character.enabled = false;
-            EnemyAttack.DisableAttacks();
+            character.animator.SetBool("Dash", true);
 
-            float time = 0.0f;
-            while (time < dashTime)
+            while (true)
             {
                 rb.velocity = direction;
-
-                yield return new WaitForSeconds(Time.fixedDeltaTime);
-
-                time += Time.fixedDeltaTime;
+                yield return null;
             }
-            rb.velocity = Vector2.zero;
-
-            EnemyAttack.EnableAttacks();
-            character.enabled = true;
         }
+    }
+
+
+    public void StopDash()
+    {
+        StopCoroutine(dash);
+
+        AudioManager.playerDash.enabled = false;
+        character.enabled = true;
+        character.animator.SetBool("Dash", false);
     }
 }

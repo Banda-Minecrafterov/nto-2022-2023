@@ -13,6 +13,8 @@ public class TipManager : MonoBehaviour
     [SerializeField]
     GameObject buttonPress;
     [SerializeField]
+    GameObject twoButtonPress;
+    [SerializeField]
     ItemSlot item;
     [SerializeField]
     GameObject itemGet;
@@ -91,14 +93,14 @@ public class TipManager : MonoBehaviour
     }
 
 
-    public static void TipButtonEnable()
+    public static void TipButton(bool isShow)
     {
-        tipManager.buttonPress.SetActive(true);
+        tipManager.buttonPress.SetActive(isShow);
     }
 
-    public static void TipButtonDisable()
+    public static void TipTwoButton(bool isShow)
     {
-        tipManager.buttonPress.SetActive(false);
+        tipManager.twoButtonPress.SetActive(isShow);
     }
 
 

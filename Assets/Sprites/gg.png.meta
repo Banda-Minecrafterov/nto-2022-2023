@@ -3308,6 +3308,1245 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: gg_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 107
+        width: 32
+        height: 51
+      alignment: 9
+      pivot: {x: 0.25, y: 0.11764706}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ebb116fe88cd014caab4e5f09aa7a88
+      internalID: 125315042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_2
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 106
+        width: 35
+        height: 48
+      alignment: 9
+      pivot: {x: 0.2, y: 0.14583334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bd5a197ebe3e3241b08f30232555c1b
+      internalID: -604913608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_3
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 109
+        width: 45
+        height: 28
+      alignment: 9
+      pivot: {x: 0.2888889, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c0857a4311503546bcc6a236930607e
+      internalID: -274835137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_4
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 107
+        width: 45
+        height: 29
+      alignment: 9
+      pivot: {x: 0.2888889, y: 0.20689654}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22f1f2a8b3e08ea439c7314259adfdf3
+      internalID: -2075141997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_5
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 106
+        width: 42
+        height: 29
+      alignment: 9
+      pivot: {x: 0.30952382, y: 0.2413793}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da32af66fcc4e884abc61b0fcdca9b34
+      internalID: 1943487800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_6
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 110
+        width: 37
+        height: 30
+      alignment: 9
+      pivot: {x: 0.2972973, y: 0.10000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0617f6d003a8e0444b77f51e8cf5fef4
+      internalID: -710145508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_7
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 110
+        width: 33
+        height: 33
+      alignment: 9
+      pivot: {x: 0.21212122, y: 0.09090909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a96659e1268de445a19e250ecb9dbf6
+      internalID: 741884156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_8
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 109
+        width: 35
+        height: 30
+      alignment: 9
+      pivot: {x: 0.25714287, y: 0.13333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e70626c1e1a39f42942511b88749080
+      internalID: 1345693071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_9
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 109
+        width: 41
+        height: 25
+      alignment: 9
+      pivot: {x: 0.29268292, y: 0.16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 961e945c9c0ebb741a6b609ed8c873d1
+      internalID: 95115620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_10
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 108
+        width: 48
+        height: 23
+      alignment: 9
+      pivot: {x: 0.3541667, y: 0.21739131}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 653369da5aabf0a428186397e76aebe9
+      internalID: 1162266983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_11
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 108
+        width: 37
+        height: 34
+      alignment: 9
+      pivot: {x: 0.24324325, y: 0.14705883}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf676cd538c5bb54a8bb68f8e3ba274a
+      internalID: -562075189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_12
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 107
+        width: 42
+        height: 37
+      alignment: 9
+      pivot: {x: 0.21428572, y: 0.16216217}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 424c2fc418345974e89840e508f5728e
+      internalID: 1870770899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_13
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 109
+        width: 31
+        height: 42
+      alignment: 9
+      pivot: {x: 0.2580645, y: 0.0952381}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 177654ddc000306449b09f18b9b480f1
+      internalID: 1047878478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_14
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 108
+        width: 31
+        height: 45
+      alignment: 9
+      pivot: {x: 0.2580645, y: 0.11111111}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa8956da35768af4ebe396f6baa70cd5
+      internalID: -1221330467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_15
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 107
+        width: 32
+        height: 51
+      alignment: 9
+      pivot: {x: 0.25, y: 0.11764707}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4529036bb69e4b44ad3b1a1e3685ccd
+      internalID: 1875336919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 161
+        width: 32
+        height: 51
+      alignment: 9
+      pivot: {x: 0.28125, y: 0.13725491}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca84b47d16e702a41ad7bb870db4bc70
+      internalID: -1424987683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_17
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 160
+        width: 35
+        height: 48
+      alignment: 9
+      pivot: {x: 0.4, y: 0.14583333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bfc9a3e65473b146bce0694d042408f
+      internalID: -1142980629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_18
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 163
+        width: 45
+        height: 28
+      alignment: 9
+      pivot: {x: 0.2888889, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 949440cc47c24ee40bc7ec7ef962d851
+      internalID: 582956358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_19
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 161
+        width: 45
+        height: 29
+      alignment: 9
+      pivot: {x: 0.26666668, y: 0.20689654}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0ecdb9dfea198c4ea70b436a57ad21e
+      internalID: 2072127137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_20
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 160
+        width: 42
+        height: 29
+      alignment: 9
+      pivot: {x: 0.21428572, y: 0.2413793}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f2979dd6c4fd104aac87fffb7760194
+      internalID: 668363498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_21
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 163
+        width: 37
+        height: 30
+      alignment: 9
+      pivot: {x: 0.16216217, y: 0.13333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b99291e792247d49abd2274fc76db9c
+      internalID: -1317897970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_22
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 164
+        width: 33
+        height: 33
+      alignment: 9
+      pivot: {x: 0.18181819, y: 0.09090909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb5a3e694c92c034db00007ebb41d3ed
+      internalID: -256512982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_23
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 163
+        width: 35
+        height: 30
+      alignment: 9
+      pivot: {x: 0.17142858, y: 0.13333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21f5368b71f10404f8d0112594bbd806
+      internalID: 358860951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_24
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 163
+        width: 41
+        height: 25
+      alignment: 9
+      pivot: {x: 0.2195122, y: 0.16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d193c181fd9900c4d8d2946decad4662
+      internalID: -713587127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_25
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 162
+        width: 48
+        height: 23
+      alignment: 9
+      pivot: {x: 0.22916667, y: 0.21739131}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9566e6891f3e8b7418d26b2e7056315c
+      internalID: 1788338726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_26
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 162
+        width: 37
+        height: 34
+      alignment: 9
+      pivot: {x: 0.21621622, y: 0.14705883}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02d0a1e1a4d56f41ad236cfe99e561b
+      internalID: 633755669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_27
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 161
+        width: 42
+        height: 37
+      alignment: 9
+      pivot: {x: 0.30952382, y: 0.16216217}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5020d0ab56309f49b6607b74b7ffc54
+      internalID: 981301587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_28
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 163
+        width: 31
+        height: 42
+      alignment: 9
+      pivot: {x: 0.2580645, y: 0.0952381}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53c8c516af576b7439e5e21b71b77713
+      internalID: 731763387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_29
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 162
+        width: 31
+        height: 45
+      alignment: 9
+      pivot: {x: 0.2580645, y: 0.11111111}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de7b2c0705bba634db6b92bb6998cde1
+      internalID: 1787251790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_30
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 161
+        width: 32
+        height: 51
+      alignment: 9
+      pivot: {x: 0.3125, y: 0.11764706}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3843649fca80b745a2284afc8d3bc0a
+      internalID: 1623301308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 268
+        width: 41
+        height: 53
+      alignment: 9
+      pivot: {x: 0.31707317, y: 0.1509434}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9bd63c8505210d48ae0b32a264a5317
+      internalID: -1915584991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_31
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 269
+        width: 39
+        height: 44
+      alignment: 9
+      pivot: {x: 0.33333334, y: 0.1590909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c076ed78ce1e2b40bb09c96c718db68
+      internalID: 870510653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_32
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 268
+        width: 36
+        height: 39
+      alignment: 9
+      pivot: {x: 0.2777778, y: 0.23076923}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb8f50cbd46f6c34b9d7ceb4e1e82a90
+      internalID: -1845771910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_33
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 272
+        width: 33
+        height: 28
+      alignment: 9
+      pivot: {x: 0.3030303, y: 0.21428573}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d15ca9a1e5c1fb44b8ac5fe1f5c39278
+      internalID: -1504550161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_34
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 273
+        width: 32
+        height: 24
+      alignment: 9
+      pivot: {x: 0.3125, y: 0.20833334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36312ebaee82baa459044feea99a3167
+      internalID: 1430256858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_35
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 272
+        width: 33
+        height: 27
+      alignment: 9
+      pivot: {x: 0.3030303, y: 0.22222222}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac84b8cc11be41a419b75fd156cae1ed
+      internalID: -1398574197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_36
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 272
+        width: 31
+        height: 30
+      alignment: 9
+      pivot: {x: 0.32258064, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdd6cf3bc29a8634697b50ed256501aa
+      internalID: 1714692812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_37
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 274
+        width: 32
+        height: 31
+      alignment: 9
+      pivot: {x: 0.28125, y: 0.12903225}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97a032f0c21931e4eaa0aca0be9fc37d
+      internalID: -1684153228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_38
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 273
+        width: 33
+        height: 26
+      alignment: 9
+      pivot: {x: 0.3030303, y: 0.1923077}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07ad7a2fed64af74baac57de0ebfd31f
+      internalID: 954066041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_39
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 274
+        width: 32
+        height: 24
+      alignment: 9
+      pivot: {x: 0.28125, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e37ecefbdbfd957438f443e60ca1b78c
+      internalID: -2004476180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_40
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 273
+        width: 36
+        height: 30
+      alignment: 9
+      pivot: {x: 0.33333334, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9508d28b84c5a74f9f73437eef74e08
+      internalID: -1500213936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_41
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 270
+        width: 36
+        height: 36
+      alignment: 9
+      pivot: {x: 0.30555555, y: 0.22222222}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a6a7e4d2aa4e3e409c0bf80142ea36e
+      internalID: -1452010402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_42
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 271
+        width: 37
+        height: 41
+      alignment: 9
+      pivot: {x: 0.2972973, y: 0.1707317}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c0f4f62d9dc9374d9f068df27171f2a
+      internalID: 1133640547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_43
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 270
+        width: 36
+        height: 45
+      alignment: 9
+      pivot: {x: 0.33333334, y: 0.13333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b71ac2a35bc153d4dba155399b563c8b
+      internalID: -594836470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_44
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 268
+        width: 41
+        height: 53
+      alignment: 9
+      pivot: {x: 0.31707317, y: 0.1509434}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8bb64cfb17de944d961d5ef836e460e
+      internalID: 2043964284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 214
+        width: 41
+        height: 51
+      alignment: 9
+      pivot: {x: 0.31707317, y: 0.13725491}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e337c5315eaed548bb2676b4328b569
+      internalID: 440326544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_46
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 215
+        width: 34
+        height: 42
+      alignment: 9
+      pivot: {x: 0.29411766, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12e4ddc29fc646e47a53bb4ce4bbd4b9
+      internalID: -89104695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_47
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 214
+        width: 34
+        height: 35
+      alignment: 9
+      pivot: {x: 0.29411766, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1daf4afd66e07fe4d8f6dedc707206bd
+      internalID: -928148083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_48
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 215
+        width: 33
+        height: 39
+      alignment: 9
+      pivot: {x: 0.3030303, y: 0.17948718}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c56904cc43c097d4289286d9ae29e806
+      internalID: -91029224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_49
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 216
+        width: 34
+        height: 39
+      alignment: 9
+      pivot: {x: 0.29411766, y: 0.12820514}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeee607e29bbf3b4892a22e2dd825ee3
+      internalID: -1511891231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_50
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 215
+        width: 35
+        height: 36
+      alignment: 9
+      pivot: {x: 0.2857143, y: 0.11111111}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d0207dea2b23a6478544c077133e5e7
+      internalID: 326737777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_51
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 217
+        width: 28
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24f67de26f2cc3c4a8d7615f4f15ff90
+      internalID: 977106506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_52
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 218
+        width: 24
+        height: 26
+      alignment: 9
+      pivot: {x: 0.20833334, y: 0.07692308}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f702ff24b1f43342a55d199d252e450
+      internalID: 1382485849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_53
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 218
+        width: 29
+        height: 31
+      alignment: 9
+      pivot: {x: 0.2413793, y: 0.06451613}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c182b10ab844694eadf343fff82c6d1
+      internalID: -170320109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_54
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 217
+        width: 32
+        height: 36
+      alignment: 9
+      pivot: {x: 0.28125, y: 0.083333336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb00a271deb40d41b0ca450e953c1b1
+      internalID: 1255764525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_55
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 218
+        width: 34
+        height: 39
+      alignment: 9
+      pivot: {x: 0.29411766, y: 0.07692308}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 707340e13f786e54c8fdb9153a7ff798
+      internalID: 424861719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_56
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 215
+        width: 33
+        height: 45
+      alignment: 9
+      pivot: {x: 0.27272728, y: 0.13333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17236f8404d2ea74082a25715ccebb18
+      internalID: 877963712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_57
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 215
+        width: 31
+        height: 47
+      alignment: 9
+      pivot: {x: 0.29032257, y: 0.10638297}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8ee6b08db36f154a8c46ea5c1ef591f
+      internalID: -1717966855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gg_58
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 214
+        width: 41
+        height: 51
+      alignment: 9
+      pivot: {x: 0.31707317, y: 0.13725491}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e17065f8c1778134985a22a24b017bdc
+      internalID: -2062918997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -3322,15 +4561,119 @@ TextureImporter:
       gg 1_0: -1173659590
       gg 1_115: 888353140
       gg 1_81: -2089239743
-      gg 1_8: -884016952
+      gg_54: 1255764525
       gg 1_108: 94901256
+      gg_16: -1424987683
+      gg_18: 582956358
+      gg 1_70: -422664084
+      gg 1_43: 771809382
+      gg 1_84: 64695367
+      gg 1_148: -898016005
+      gg 1_73: 298330082
+      gg 1_44: 1969672297
+      gg 1_98: 257183710
+      gg_57: -1717966855
+      gg 1_27: 1665795878
+      gg_15: 1875336919
+      gg 1_114: 519310059
+      gg 1_149: -830109272
+      gg_4: -2075141997
+      gg 1_146: 1034340988
+      gg 1_101: 488993688
+      gg 1_1: -1644775402
+      gg_6: -710145508
+      gg_8: 1345693071
+      gg 1_78: 1397802274
+      gg 1_124: 2113029854
+      gg_35: -1398574197
+      gg_23: 358860951
+      gg 1_71: 585272608
+      gg_17: -1142980629
+      gg 1_132: -929473537
+      gg_41: -1452010402
+      gg 1_5: -354248412
+      gg 1_22: 1420647848
+      gg_29: 1787251790
+      gg 1_65: 1123018456
+      gg_20: 668363498
+      gg 1_103: -1032722579
+      gg 1_109: -879283759
+      gg_32: -1845771910
+      gg_10: 1162266983
+      gg 1_105: -553498420
+      gg 1_130: 2015045437
+      gg_24: -713587127
+      gg_46: -89104695
+      gg_58: -2062918997
+      gg 1_31: 291343580
+      gg 1_120: 590219731
+      gg 1_13: -1969143635
+      gg 1_34: -1747488665
+      gg_22: -256512982
+      gg_48: -91029224
+      gg 1_4: -1527708185
+      gg 1_48: -554886400
+      gg 1_42: 1940420883
+      gg 1_128: -977246954
+      gg_2: -604913608
+      gg 1_118: 426775677
+      gg 1_33: 1227828846
+      gg 1_96: -94930218
+      gg 1_72: -1932432030
+      gg_33: -1504550161
+      gg 1_116: 980741054
+      gg 1_129: -1133989325
+      gg 1_62: 781909907
+      gg 1_99: -1243799657
+      gg 1_136: 1517115185
+      gg 1_26: -1185643391
+      gg 1_91: 1139195007
+      gg 1_142: -1427067224
+      gg 1_100: -245344138
+      gg 1_24: 1910153513
+      gg_30: 1623301308
+      gg_14: -1221330467
+      gg_34: 1430256858
+      gg 1_154: 766994080
+      gg 1_123: 1602120203
+      gg_55: 424861719
+      gg_11: -562075189
+      gg 1_107: -1498955527
+      gg 1_30: 966785737
+      gg 1_134: -1200936404
+      gg_52: 1382485849
+      gg 1_110: 2085346550
+      gg_47: -928148083
+      gg_25: 1788338726
+      gg 1_50: 1523186375
+      gg 1_7: 1038582314
+      gg 1_17: -1945429226
+      gg 1_74: -751143823
+      gg 1_92: -373447696
+      gg 1_54: -706596867
+      gg_43: -594836470
+      gg 1_112: 824442486
+      gg 1_18: 1673502841
+      gg 1_127: 358273651
+      gg 1_12: 1753542945
+      gg 1_153: 1517322665
+      gg 1_106: 588556296
+      gg 1_151: 370265755
+      gg 1_89: 1546730874
+      gg 1_143: -1313883127
+      gg_39: -2004476180
+      gg 1_59: 1922082129
+      gg_44: 2043964284
+      gg_50: 326737777
+      gg 1_6: 649786589
+      gg 1_10: -1366975928
+      gg 1_8: -884016952
       gg 1_138: -1695980500
       gg 1_97: -308011877
       gg 1_77: -1858596737
-      gg 1_70: -422664084
+      gg_28: 731763387
       gg 1_15: -208824197
-      gg 1_43: 771809382
-      gg 1_84: 64695367
+      gg 1_152: -165074769
       gg 1_131: -710285049
       gg 1_117: 533207118
       gg 1_68: 1378901814
@@ -3338,142 +4681,97 @@ TextureImporter:
       gg 1_52: -982161935
       gg 1_76: 941936628
       gg 1_83: -1230454280
-      gg 1_152: -165074769
       gg 1_133: 1138404103
       gg 1_14: 653315205
       gg 1_16: -1154311392
-      gg 1_44: 1969672297
-      gg 1_73: 298330082
-      gg 1_98: 257183710
-      gg 1_111: -1024056115
-      gg 1_148: -898016005
       gg 1_126: -1238410874
+      gg 1_111: -1024056115
+      gg_37: -1684153228
       gg 1_67: -1901766797
       gg 1_19: -1977710592
-      gg 1_27: 1665795878
       gg 1_95: 1789221674
-      gg 1_114: 519310059
       gg 1_75: 1944755181
-      gg 1_146: 1034340988
-      gg 1_101: 488993688
-      gg 1_149: -830109272
-      gg 1_1: -1644775402
+      gg_7: 741884156
       gg 1_141: -1672839853
+      gg_3: -274835137
       gg 1_3: 603441794
-      gg 1_78: 1397802274
-      gg 1_124: 2113029854
       gg 1_32: -1089508753
       gg 1_11: 1276741587
-      gg 1_71: 585272608
       gg 1_41: -1124887527
-      gg 1_132: -929473537
       gg 1_135: 1994548978
+      gg_5: 1943487800
       gg 1_147: 378089033
-      gg 1_5: -354248412
-      gg 1_22: 1420647848
-      gg 1_65: 1123018456
+      gg_19: 2072127137
       gg 1_86: -1912070474
       gg 1_140: -654158224
-      gg 1_103: -1032722579
-      gg 1_109: -879283759
+      gg_31: 870510653
+      gg_21: -1317897970
       gg 1_122: 1937530671
-      gg 1_105: -553498420
-      gg 1_130: 2015045437
       gg 1_56: 1960029245
       gg 1_85: -626017846
-      gg 1_31: 291343580
+      gg_13: 1047878478
       gg 1_60: -341743278
-      gg 1_13: -1969143635
       gg 1_47: -1596662232
-      gg 1_34: -1747488665
-      gg 1_120: 590219731
+      gg_0: -1915584991
       gg 1_9: 464701084
       gg 1_145: 668072459
-      gg 1_4: -1527708185
-      gg 1_48: -554886400
       gg 1_94: 914913874
       gg 1_88: 1620899193
       gg 1_57: 1603675824
-      gg 1_42: 1940420883
-      gg 1_128: -977246954
+      gg 1_51: 1887088791
       gg 1_37: 1237937740
       gg 1_119: -356403826
-      gg 1_51: 1887088791
+      gg_51: 977106506
       gg 1_63: 2040569252
-      gg 1_118: 426775677
-      gg 1_33: 1227828846
+      gg_27: 981301587
       gg 1_23: -1378142758
       gg 1_55: -1816686414
-      gg 1_96: -94930218
-      gg 1_72: -1932432030
+      gg_12: 1870770899
       gg 1_35: 1166570165
       gg 1_49: 622275453
       gg 1_21: -2061304262
-      gg 1_129: -1133989325
-      gg 1_62: 781909907
-      gg 1_99: -1243799657
-      gg 1_136: 1517115185
       gg 1_150: 882393171
-      gg 1_26: -1185643391
       gg 1_25: -345811835
       gg 1_79: 352115079
-      gg 1_91: 1139195007
+      gg_40: -1500213936
       gg 1_45: -863500621
-      gg 1_142: -1427067224
       gg 1_40: 184829015
-      gg 1_100: -245344138
-      gg 1_24: 1910153513
+      gg_36: 1714692812
       gg 1_39: 2034621283
       gg 1_121: 1270332094
-      gg 1_116: 980741054
       gg 1_144: 1342742713
-      gg 1_123: 1602120203
-      gg 1_154: 766994080
+      gg_42: 1133640547
       gg 1_80: 1262202089
-      gg 1_107: -1498955527
-      gg 1_30: 966785737
-      gg 1_134: -1200936404
+      gg_56: 877963712
+      gg_49: -1511891231
       gg 1_82: -414815838
-      gg 1_110: 2085346550
       gg 1_137: 1023566985
-      gg 1_50: 1523186375
-      gg 1_7: 1038582314
+      gg_9: 95115620
       gg 1_66: -14104657
       gg 1_61: 1195744029
-      gg 1_17: -1945429226
-      gg 1_74: -751143823
-      gg 1_92: -373447696
-      gg 1_54: -706596867
+      gg 1_113: -957216455
       gg 1_90: 448790184
       gg 1_104: -1775109927
-      gg 1_113: -957216455
+      gg_26: 633755669
       gg 1_36: -172726438
-      gg 1_112: 824442486
       gg 1_53: -1183452990
       gg 1_139: -436695793
+      gg_38: 954066041
+      gg_53: -170320109
       gg 1_29: -1850094310
-      gg 1_18: 1673502841
       gg 1_125: 1399068528
-      gg 1_127: 358273651
-      gg 1_12: 1753542945
       gg 1_2: 1041874197
-      gg 1_153: 1517322665
       gg 1_87: 1098971994
       gg 1_69: 504408806
-      gg 1_106: 588556296
-      gg 1_151: 370265755
       gg 1_58: -1143204851
-      gg 1_89: 1546730874
+      gg_45: 440326544
       gg 1_38: 442707864
       gg 1_93: 456770788
-      gg 1_143: -1313883127
       gg 1_46: -889083441
-      gg 1_59: 1922082129
       gg 1_102: 1877944288
+      gg_1: 125315042
       gg 1_64: 1680387227
       gg 1_28: 1251506981
-      gg 1_6: 649786589
-      gg 1_10: -1366975928
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

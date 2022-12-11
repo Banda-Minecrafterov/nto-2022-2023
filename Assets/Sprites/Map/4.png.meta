@@ -498,10 +498,10 @@ TextureImporter:
       name: 4_28
       rect:
         serializedVersion: 2
-        x: 552
+        x: 554
         y: 198
-        width: 58
-        height: 123
+        width: 56
+        height: 50
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -532,6 +532,48 @@ TextureImporter:
       bones: []
       spriteID: 0161ceccd2f621244830726bf6759aaa
       internalID: -1015751722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_5
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 248
+        width: 20
+        height: 73
+      alignment: 9
+      pivot: {x: 0, y: -0.1369863}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d17d681733279db48830f4edcb0494b1
+      internalID: 1452081354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_6
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 248
+        width: 35
+        height: 73
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5acb8b3eacf1c7468a59267ff2dd361
+      internalID: -367600147
       vertices: []
       indices: 
       edges: []

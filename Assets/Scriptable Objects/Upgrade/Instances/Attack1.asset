@@ -16,7 +16,7 @@ MonoBehaviour:
   buff:
     id: 0
     attackPercentage: 1
-    attackPlus: 20
+    attackPlus: 5
     maxHealthPercantage: 1
     maxHealthPlus: 0
   next: {fileID: 11400000, guid: d25377673acbb2e49b1d5e1d7a9395e4, type: 2}

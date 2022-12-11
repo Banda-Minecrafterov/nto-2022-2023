@@ -11,4 +11,7 @@ public class CharacterBuff
 
     public float maxHealthPercantage = 1.0f;
     public float maxHealthPlus       = 0;
+
+    public float maxStaminaPercantage = 1.0f;
+    public float maxStaminaPlus       = 0;
 }
