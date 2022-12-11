@@ -1,21 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : BaseMenu
 {
     public static bool isPaused { get; private set; } = false;
 
     [SerializeField]
-    GameObject pauseMenu;
-    [SerializeField]
     GameObject settingsMenu;
+    [SerializeField]
+    GameObject keysMenu;
+    [SerializeField]
+    GameObject beastsMenu;
+    [SerializeField]
+    GameObject inventoryMenu;
 
     [SerializeField]
-    GameObject saveMenu;
+    SaveMenu    saveMenuLocal;
+    [SerializeField]
+    GameObject  loadMenuLocal;
+    [SerializeField]
+    UpgradeMenu upgradeMenuLocal;
+
+    [SerializeField]
+    GameObject foreground;
+
+    [SerializeField]
+    Transform buttons;
 
     static PauseMenu menu;
-    
+
+    public static SaveMenu    saveMenu    { get => menu.saveMenuLocal;  }
+    public static GameObject  loadMenu    { get => menu.loadMenuLocal; }
+    public static UpgradeMenu upgradeMenu { get => menu.upgradeMenuLocal; }
+
 
     void Awake()
     {
@@ -23,10 +42,19 @@ public class PauseMenu : BaseMenu
 
         StartCoroutine(UpdateMenu());
 
+        beastsMenu.SetActive(true);
+        inventoryMenu.SetActive(true);
+
+        upgradeMenu.gameObject.SetActive(true);
+
 #if DEBUG
-        pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
-        saveMenu.SetActive(false);
+        keysMenu.SetActive(false);
+
+        saveMenu.gameObject.SetActive(false);
+        loadMenu.SetActive(false);
+
+        foreground.SetActive(false);
 #endif
     }
 
@@ -35,66 +63,157 @@ public class PauseMenu : BaseMenu
     {
         while (true)
         {
-            if (Input.GetButtonDown("Cancel") && !saveMenu.activeSelf)
+            if (EnemyChase.isNotInCombat)
             {
-                Resume();
-                yield return new WaitForSecondsRealtime(0.1f);
+                if (Input.GetButtonDown("Beasts"))
+                {
+                    if (!isPaused)
+                    {
+                        Pause();
+                        foreground.SetActive(true);
+                    }
+
+                    BeastsMenu();
+                    yield return new WaitForSecondsRealtime(0.1f);
+                }
+                else if (Input.GetButtonDown("Inventory"))
+                {
+                    if (!isPaused)
+                    {
+                        Pause();
+                        foreground.SetActive(true);
+                    }
+
+                    InventoryMenu();
+                    yield return new WaitForSecondsRealtime(0.1f);
+                }
+                else if (Input.GetButtonDown("Cancel"))
+                {
+                    if (isPaused)
+                    {
+                        Pause();
+                        foreground.SetActive(false);
+
+                        settingsMenu.SetActive(false);
+                        keysMenu.SetActive(false);
+                        beastsMenu.SetActive(false);
+                        inventoryMenu.SetActive(false);
+
+                        saveMenuLocal.gameObject.SetActive(false);
+                        loadMenuLocal.SetActive(false);
+                        upgradeMenuLocal.gameObject.SetActive(false);
+
+                        TipManager.TooltipDisable();
+                    }
+                    yield return new WaitForSecondsRealtime(0.1f);
+                }
             }
             yield return null;
         }
     }
 
 
-    public void Resume()
-    {
-        foreach (var i in GetPauseComponents())
-        {
-            i.enabled = isPaused;
-        }
-
-
-        isPaused = !isPaused;
-
-        if (!isPaused)
-            settingsMenu.SetActive(false);
-        pauseMenu.SetActive(isPaused);
-
-        Time.timeScale = isPaused ? 0 : 1;
-        MouseManager.SetMouseMode(isPaused);
-    }
-
-    public void Settings(GameObject settings)
-    {
-        Settings(pauseMenu, settings);
-    }
-
     public void Menu()
     {
         isPaused = false;
         Time.timeScale = 1;
 
-        Manager.LoadScene("Menu");
+        LoadSceneManager.LoadScene("Menu");
     }
 
 
-    public static void SaveMenu()
+    public void SettingsMenu()
     {
-        menu.Resume();
-        if (isPaused)
+        buttons.GetChild(0).gameObject.GetComponent<Button>().Select();
+
+        settingsMenu.SetActive(true);
+        keysMenu.SetActive(false);
+        beastsMenu.SetActive(false);
+        inventoryMenu.SetActive(false);
+
+        AudioManager.uiOpen.Play();
+    }
+
+    public void BeastsMenu()
+    {
+        buttons.GetChild(1).gameObject.GetComponent<Button>().Select();
+
+        settingsMenu.SetActive(false);
+        keysMenu.SetActive(false);
+        beastsMenu.SetActive(true);
+        inventoryMenu.SetActive(false);
+
+        AudioManager.uiOpen.Play();
+    }
+
+    public void InventoryMenu()
+    {
+        buttons.GetChild(2).gameObject.GetComponent<Button>().Select();
+
+        settingsMenu.SetActive(false);
+        keysMenu.SetActive(false);
+        beastsMenu.SetActive(false);
+        inventoryMenu.SetActive(true);
+
+        AudioManager.uiOpen.Play();
+    }
+
+
+    public static void OpenSaveMenu(Idol idol)
+    {
+        OpenMenu(saveMenu.gameObject);
+        saveMenu.Open(idol);
+    }
+
+    public static void CloseSaveMenu()
+    {
+        OpenMenu(saveMenu.gameObject);
+    }
+
+    public static void LoadMenu()
+    {
+        OpenMenu(loadMenu);
+    }
+
+    public static void UpgradeMenu()
+    {
+        OpenMenu(upgradeMenu.gameObject);
+    }
+
+    static void OpenMenu(GameObject menu)
+    {
+        PauseMenu.menu.Pause();
+        menu.SetActive(isPaused);
+
+        AudioManager.uiOpen.Play();
+    }
+
+
+    void Pause()
+    {
+        foreach (var i in GetPauseComponents())
         {
-            menu.pauseMenu.SetActive(false);
+            i.enabled = isPaused;
         }
-        menu.saveMenu.SetActive(isPaused);
+        TipManager.Pause();
+
+        isPaused = !isPaused;
+
+        Time.timeScale = isPaused ? 0 : 1;
+        MouseManager.SetMouseMode(isPaused);
     }
 
 
     static List<MonoBehaviour> GetPauseComponents()
     {
-        List<MonoBehaviour> components = new List<MonoBehaviour>();
-
+        List<MonoBehaviour> components = new List<MonoBehaviour>
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            components.Add(player.GetComponent<test>());
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>()
+        };
+
+        foreach (var i in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            components.Add(i.GetComponent<Enemy>());
         }
 
         return components;

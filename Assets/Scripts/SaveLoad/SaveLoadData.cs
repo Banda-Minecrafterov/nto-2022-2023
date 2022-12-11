@@ -4,44 +4,80 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public abstract class SaveLoadData : MonoBehaviour
+public class SaveLoadData
 {
-    public enum SaveObjectId
+    FileStream fs;
+    public BinaryReader reader { get; private set; }
+    public BinaryWriter writer { get; private set; }
+
+
+    public const Int32 FileNotFound = Int32.MinValue, ErrorOcured = Int32.MinValue + 1;
+    public Int32 version { get; private set; }
+    public Exception exception { get; private set; }
+
+
+    public SaveLoadData(int id)
     {
-        test = 0, size
-    }
-
-    static public SaveLoadData[] saveObjects { get; private set; } = new SaveLoadData[(int)SaveObjectId.size];
-
-
-    public void AddObject(SaveObjectId id)
-    {
-        saveObjects[(int)id] = this;
-    }
-
-
-    public static void SaveAll(ref BinaryWriter data, Int32 version)
-    {
-        data.Write(version);
-
-        foreach (var i in saveObjects)
+        try
         {
-            i.Save(ref data);
+            fs = File.Open(Path.Combine(Application.persistentDataPath, id + ".sav"), FileMode.Open, FileAccess.ReadWrite);
         }
-    }
-
-    public static void LoadAll(ref BinaryReader data, Int32 version)
-    {
-        foreach (var i in saveObjects)
+        catch (FileNotFoundException)
         {
-            i.Load(ref data, version);
+            version = FileNotFound;
+            return;
         }
+        catch (Exception e)
+        {
+            exception = e;
+            version = ErrorOcured;
+            return;
+        }
+
+        reader = new BinaryReader(fs);
+        writer = new BinaryWriter(fs);
+
+        version = reader.ReadInt32();
+    }
+
+    ~SaveLoadData()
+    {
+        fs?.Close();
+        reader?.Close();
+        writer?.Close();
     }
 
 
-    public abstract void Awake();
+    public bool PrepareLoad()
+    {
+        if (version == FileNotFound || version == ErrorOcured)
+            return false;
 
-    public abstract void Save(ref BinaryWriter data);
+        fs.Position = sizeof(Int32);
+        return true;
+    }
 
-    public abstract void Load(ref BinaryReader data, Int32 version);
+    public bool PrepareSave(int id)
+    {
+        switch (version)
+        {
+            case FileNotFound:
+                fs = File.Open(Path.Combine(Application.persistentDataPath, id + ".sav"), FileMode.Create, FileAccess.ReadWrite);
+
+                reader = new BinaryReader(fs);
+                writer = new BinaryWriter(fs);
+                break;
+
+            case ErrorOcured:
+                return false;
+
+            default:
+                fs.SetLength(0);
+                break;
+        }
+        version = Convert.ToInt32(Application.version);
+
+        fs.Position = 0;
+        return true;
+    }
 }

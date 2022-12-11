@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a489aa0c7dab9a4dab8c843192777c4, type: 3}
+  m_Name: Stamina2
+  m_EditorClassIdentifier: 
+  sunEnergy: 150
+  buff:
+    id: 5
+    attackPercentage: 1
+    attackPlus: 0
+    maxHealthPercantage: 1
+    maxHealthPlus: 0
+    maxStaminaPercantage: 1
+    maxStaminaPlus: 25
+  next: {fileID: 0}

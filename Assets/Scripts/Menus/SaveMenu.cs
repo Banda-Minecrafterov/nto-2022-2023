@@ -1,33 +1,25 @@
+using UnityEngine;
+
 public class SaveMenu : SaveLoadMenu
 {
-    void OnEnable()
+    Idol idol;
+
+
+    public void Save(Transform button)
     {
-        MouseManager.SetMouseMode(true);
-    }
+        int id = button.GetSiblingIndex();
 
-    void OnDisable()
-    {
-        MouseManager.SetMouseMode(false);
-    }
+        SaveLoadManager.Save(id);
+        idol.isSaveable = false;
 
+        InitButton(button, id);
 
-    public void Save(int id)
-    {
-        ((SaveData)datas[id]).Save(id);
-
-        InitButton(buttons.GetChild(id), id);
-
-        Back();
-    }
-
-    public void Back()
-    {
-        PauseMenu.SaveMenu();
+        PauseMenu.CloseSaveMenu();
     }
 
 
-    public override Data GetData(int i)
+    public void Open(Idol idol)
     {
-        return Manager.SaveSaveFile(i);
+        this.idol = idol;
     }
 }

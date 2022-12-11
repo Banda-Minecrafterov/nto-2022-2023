@@ -1,42 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class LoadMenu : SaveLoadMenu
 {
-    public void Load(int id)
+    public void Load(Transform button)
     {
-        switch (datas[id].version)
-        {
-            case Data.ErrorOcured:
-                // TODO
-                id = SaveSlotCount;
-                goto default;
-
-            case Data.FileNotFound:
-                id = SaveSlotCount;
-                goto default;
-
-            default:
-                for (int i = 0; i < id; i++)
-                {
-                    Destroy(datas[i]);
-                }
-                for (int i = id + 1; i < SaveSlotCount; i++)
-                {
-                    Destroy(datas[i]);
-                }
-
-                MouseManager.SetMouseMode(false);
-                Manager.LoadScene("Game");
-                break;
-        }
+        LoadSceneManager.LoadScene("Game", button.GetSiblingIndex());
     }
 
 
-    public override Data GetData(int i)
+    public void Back()
     {
-        return Manager.LoadSaveFile(i);
+        PauseMenu.LoadMenu();
     }
 }

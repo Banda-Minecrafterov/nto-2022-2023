@@ -3,32 +3,24 @@ using UnityEngine;
 
 public abstract class SaveLoadMenu : BaseMenu
 {
-    public int SaveSlotCount { get; private set; }
-
     [SerializeField]
     protected Transform buttons;
 
-    protected Data[] datas;
 
-    void Start()
+    void Awake()
     {
-        SaveSlotCount = buttons.childCount;
-        datas         = new Data[SaveSlotCount];
-
-        for (int i = 0; i < SaveSlotCount; i++)
+        for (int i = 0; i < SaveLoadManager.saveSlotsCount; i++)
         {
-            datas[i] = GetData(i);
-
             Transform button = buttons.GetChild(i);
-            switch (datas[i].version)
+            switch (SaveLoadManager.saveLoadDatas[i].version)
             {
-                case Data.ErrorOcured:
-                    button.Find("Text").GetComponent<TextMeshProUGUI>().text = "Error";
-                    goto case Data.FileNotFound;
-
-                case Data.FileNotFound:
-                    button.Find("Ver").gameObject.SetActive(false);
+                case SaveLoadData.FileNotFound:
+                    //button.Find("Ver").gameObject.SetActive(false);
                     break;
+
+                case SaveLoadData.ErrorOcured:
+                    //button.Find("Text").GetComponent<TextMeshProUGUI>().text = "Error";
+                    goto case SaveLoadData.FileNotFound;
 
                 default:
                     InitButton(button, i);
@@ -39,11 +31,11 @@ public abstract class SaveLoadMenu : BaseMenu
 
     public void InitButton(Transform button, int id)
     {
-        button.Find("Text").gameObject.SetActive(false);
+        //button.Find("Text").gameObject.SetActive(false);
 
-        var Ver = button.Find("Ver");
-        Ver.gameObject.SetActive(true);
-        Ver.GetComponent<TextMeshProUGUI>().text = "Ver: " + datas[id].version;
+        //var Ver = button.Find("Ver");
+        //Ver.gameObject.SetActive(true);
+        //Ver.GetComponent<TextMeshProUGUI>().text = "Ver: " + SaveLoadManager.saveLoadDatas[id].version;
     }
 
 
@@ -51,7 +43,4 @@ public abstract class SaveLoadMenu : BaseMenu
     {
         Settings(gameObject, settings);
     }
-
-
-    public abstract Data GetData(int i);
 }

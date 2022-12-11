@@ -68,11 +68,13 @@ public abstract class CurseMaster : MonoBehaviour
 
             if (ChangeState(true))
             {
-                stacks = -1;
-                curseEffectCoroutine = StartCoroutine(CurseEffect());
-
                 triangle.Teleport((transform.position - collision.transform.position).normalized, R);
                 purification.transform.localPosition = UnityEngine.Random.insideUnitCircle * R;
+
+                BeginCurse();
+
+                stacks = -1;
+                curseEffectCoroutine = StartCoroutine(CurseEffect());
             }
         }
     }
@@ -122,6 +124,8 @@ public abstract class CurseMaster : MonoBehaviour
                 collider.enabled = false;
             }
 
+            EndCurse();
+
             StopCoroutine(curseEffectCoroutine);
             StartCoroutine(Respawn());
         }
@@ -155,7 +159,9 @@ public abstract class CurseMaster : MonoBehaviour
     }
 
 
+    protected abstract void BeginCurse();
     protected abstract void ApplyEffect();
+    protected abstract void EndCurse();
 
 
     IEnumerator CurseEffect()

@@ -2,10 +2,21 @@ using System.Collections;
 using UnityEngine;
 
 
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Collider2D))]
 public abstract class Interactable : MonoBehaviour
 {
+    protected Animator animator { get; private set; }
+
     Coroutine interactCheck;
+
+    public static bool checkable { get => EnemyChase.isNotInCombat && !PauseMenu.isPaused; }
+
+
+    protected void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
 
     void OnTriggerEnter2D(Collider2D other)
@@ -21,30 +32,48 @@ public abstract class Interactable : MonoBehaviour
     }
 
 
-    IEnumerator InteractCheck()
+    protected virtual IEnumerator InteractCheck()
     {
         while (true)
         {
-            if (!PauseMenu.isPaused && Input.GetButtonDown("Interact"))
+            if (checkable)
             {
-                Interact();
-                yield return new WaitForSeconds(0.1f);
+                if (Input.GetButtonDown("Interact"))
+                {
+                    animator.SetBool("Interact", true);
+                    Interact();
+                    yield return new WaitForSeconds(0.1f);
+                }
             }
             yield return null;
         }
+    }
+
+    public void StopInteracting()
+    {
+        animator.SetBool("Interact", false);
     }
 
 
     protected void StartButtonCheck()
     {
         interactCheck = StartCoroutine(InteractCheck());
+        ShowTip(true);
     }
 
-    protected void StopButtonCheck()
+    protected bool StopButtonCheck()
     {
-        StopCoroutine(interactCheck);
+        try
+        {
+            StopCoroutine(interactCheck);
+        }
+        catch { return false; }
+
+        ShowTip(false);
+        return true;
     }
 
 
-    protected abstract void Interact();
+    protected virtual void Interact() { }
+    protected virtual void ShowTip(bool isShow) { TipManager.TipButton(isShow); }
 }
